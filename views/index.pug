@@ -1,0 +1,61 @@
+doctype
+html(lang='en')
+    head
+        meta(charset='utf-8')
+        title Diario de Clases
+        link(href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous")
+        
+        link(href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet")
+        link(rel="stylesheet" href="css/styles.css")
+    body
+        header.main
+            .container
+                nav(class="flex justify-between align-center nav-links")
+                    ul
+                        li
+                            a(href="/" class="nav-link") Inicio
+                        li
+                            a(href="/#features" class="nav-link") Herramienta
+                        li
+                            a(href="/#subscription" class="nav-link") Suscríbete
+                    ul
+                        li
+                            a(href="/signin" class="btn btn-teal") Entrar
+        section.description
+            .container
+                section.text
+                    h1 Diario de Clase
+                    p Los alumnos y profesores puedan reportar eventos ocurridos durante la jornada académica, a modo de “noticias”.
+                .margin-top
+                    a(href="/signup" class="btn btn-teal") Regístrate
+        section.features#features
+            .container
+                .feature
+                    .row
+                        .column.m6
+                            .feature-description
+                                h2 Calendario
+                                p Dispón de un calendario que reúna todos tus eventos académicos.
+                        .column.m6
+                            img(src="" alt="")
+                .feature
+                    .row
+                        .column.m6
+                            img(src="" alt="")
+                        .column.m6
+                            .feature-description.right
+                                h2 chat
+                                p Mantente informado sobre cualquier información de tu asignatura.
+        section.subscription#subscription
+            .container
+                h3 ¿Quieres recibir información sobre futuras actualizaciones?
+                form(action="#" method="" class="center")
+                    .input-field
+                        label(for="email") Email
+                        input(type="email" class="border-white" placeholder="Introduce tu email" name="email" id="email" required)
+                    .submit
+                        input(type="submit" class="btn btn-red" value="Suscribirse")
+        footer
+            .container.center-xy © Copyright  2017
+        script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js")
+        script(src="js/main.js")
