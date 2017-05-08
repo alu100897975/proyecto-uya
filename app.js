@@ -15,8 +15,8 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'pug');
 app.use(sass({
     src: __dirname + '/development',
-    dest: __dirname + '/public'/*,
-    debug: true*/
+    dest: __dirname + '/public',
+    debug: true
 }));
 app.use(bodyParser.urlencoded({extended: true})); //form params in req.body
 app.use(express.static('public'));
@@ -28,6 +28,9 @@ app.use('/user',user);
 app.get('/', (req,res)=>{
     res.render('index');
 });
+app.get('/home', (req,res) =>{
+    res.render('home');
+})
 app.get('/signup', (req,res)=>{
     res.render('signup');
 });

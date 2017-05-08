@@ -1,0 +1,227 @@
+header.main {
+    background-color: #444;
+}
+/* BEGIN SIDEBAR */
+.sidebar {
+    margin-top: 20px;
+    width: 300px;
+    border: 1px solid rgb(232, 235, 237);
+    display: inline-block;
+    border-radius: 10px;
+    float: left; // borrar
+    .sidebar-title {
+        font-size: 14px;
+        font-weight: 600;
+        text-align: center;
+        text-transform: uppercase;
+        color: #444;
+    }
+    .sidebar-elem {
+        margin-top: 10px;
+        height: 300px;
+    }
+    .imp-events {
+        border-bottom: 1px solid rgb(232, 235, 237);
+        .imp-event{
+            background: rgb(237, 241, 245);
+            border-bottom: 1px solid #fff;
+            font-size: 15px;
+
+        }
+        table {
+            border-collapse: collapse;
+            text-align: left;
+            width: 100%;
+            th{
+                font-size: 14px;
+                font-weight: 500;
+                padding: 10px;
+            }
+            td {
+                height: 50px;
+                padding: 0 5px;
+            }
+        }
+    }
+
+    /* BEGIN REMINDES */
+    .reminders {
+        ul {
+            list-style-type: none;
+            margin-top: 10px;
+        }
+        .reminder {
+            display: flex;
+            height: 50px;
+            border-bottom: 1px solid #fff;
+            align-items: center;
+            background: rgb(237, 241, 245);
+            font-size: 15px;
+            .checkbox {
+                margin-right: 20px;
+                background-color: teal;
+                border-radius: 5px;
+                height: 30px;
+                width: 30px;
+                flex: none;
+            }
+            .riminder-title{
+                width: 100%;
+                padding-left: 5px;
+            }
+        }
+    }
+    /* END REMINDES */
+}
+/* END SIDEBAR */
+.content {overflow: hidden
+}
+/* PUNTOS-DIAS DE CALENDARIO*/
+.cal-month{
+
+    &.new{
+        width: 20px;
+        position: relative;
+        background-color: inherit;
+        .month-name {
+            margin-left: 100%;
+        }
+    }
+    &.current{
+        width: 0px;
+        .month-name {
+            bottom: 60px;
+        }
+
+    }
+    .month-name {
+    	letter-spacing: .3px;
+    	text-transform: uppercase;
+    	font-size: 13px;
+    	position: relative;
+    	bottom: 40px;
+    	color: #444;
+    	font-weight: 400;
+    }
+
+}
+.cal-line-points{
+	margin: 100px auto;
+	position: relative;
+    max-width: 500px;
+    .cal-line{
+        width: 100%;
+        height: 2px;
+        background-color: #DADADA;
+        position: absolute;
+        top: 0; bottom: 0;
+        margin: auto 0;
+    }
+    .cal-points {
+    	background-color: #fff;
+    	display: flex;
+        .cal-day:first-child{
+            margin-left: 0px;
+        }
+    }
+	.cal-day {
+		position: relative;
+		transition: all ease-in-out .3s;
+		margin: 0 4%;
+		z-index: 20;
+		.day {
+			position: absolute;
+			margin-top: 8px;
+			display: inline-block;
+			left: 50%;
+			transform: translatex(-50%);
+		}
+		&:hover, &:focus {
+			transform: scale(2.2);
+			.cal-point {
+				box-shadow: 0 0 5px #444;
+				transform: rotate(45deg);
+				border-radius: 50% 50%  0 50%;
+				&:before {
+					border-radius: 50% 50%  0 50%;
+					opacity: 1;
+				}
+			}
+		}
+	}
+	.cal-point {
+		width: 20px;
+		height: 20px;
+		background-color: gray;
+		border-radius: 50%;
+		transition: all ease-in-out .4s;
+		transform: rotate(45deg);
+		&.important {
+			background-color: red;
+		}
+        &.not-important {
+            background-color: #428bca;
+        }
+		&:before {
+			position: absolute;
+			content: '';
+			width: 40%;
+			height: 40%;
+			background-color: #fff;
+			border-radius: 50% ;
+			margin: auto;
+			transition: all ease-in-out .5s;
+			top: 0; left: 0; right: 0; bottom: 0;
+		}
+
+	}
+
+}
+
+/*BEGIN EVENTOS DEL DIA*/
+.day-events {
+    width: 450px;
+    border: 1px solid rgb(232, 235, 237);
+    border-radius: 0 0 10px 10px;
+    box-sizing: border-box;
+    .day {
+        padding:10px;
+        font-weight: 500;
+        font-size: 18px;
+    }
+    .events {
+
+        box-sizing: border-box;
+        width: 100%;
+        height: 300px;
+        .event:first-child{
+            margin-top: 0px;
+        }
+        .event{
+            background-color: rgb(237, 241, 245);
+            margin-top: 2px;
+            height: 50px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            &.imp {
+                border-left: 4px solid red;
+            }
+            &.medium-imp {
+                border-left: 4px solid yellow;
+            }
+
+            &.not-imp {
+                border-left: 4px solid green;
+            }
+            .event-name {
+                margin-left: 10px;
+                width: 100%;
+            }
+            .event-time {
+                margin-right: 10px;
+            }
+        }
+    }
+}
+/*END EVENTOS DEL DIA*/
