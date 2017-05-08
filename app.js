@@ -21,6 +21,10 @@ app.use(sass({
 app.use(bodyParser.urlencoded({extended: true})); //form params in req.body
 app.use(express.static('public'));
 
+
+app.use('/user',user);
+
+
 app.get('/', (req,res)=>{
     res.render('index');
 });
