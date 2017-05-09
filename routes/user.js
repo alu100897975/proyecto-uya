@@ -3,6 +3,9 @@ var express = require('express'),
     bcrypt = require('bcryptjs'),
 
     User = require('../models/user'),
+    
+    passport = require('../auth/passport.js'),
+    
 
     router = express.Router();
 
@@ -34,4 +37,23 @@ router.post('/signin', (req, res, next )=>{
         res.redirect('/home');
     });
 })
+
+router.get('/auth/facebook', passport.authenticate('facebook', {scope: 'email'}));
+
+router.get('/auth/facebook/return', (req, res, next) =>{
+    console.log('He redirigido');
+});
+
+router.get('/auth/facebook/return', 
+          passport.authenticate('facebook', {
+            succesRedirect: '/home',
+            failureRedirect: '/'
+}));
+
+router.get('/logout', function(req, res){
+    req.logout();
+    res.redirect('/');
+});
+
+
 module.exports = router

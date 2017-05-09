@@ -6,7 +6,9 @@ var mongoose = require('mongoose'),
 var schema = new Schema({
     name: { type: String, required: true},
     email: {type: String, require: true, unique: true},
-    password: {type: String, require: true}/*,
+    password: {type: String},
+    facebookId: {type: String},
+    googleId: {type: String}/*,
     events: [{type: Schema.Types.ObjectId, ref: 'Event'}]*/
 });
 schema.plugin(uniqueValidator);
