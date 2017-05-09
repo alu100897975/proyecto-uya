@@ -1,0 +1,16 @@
+header.main {
+    background-color: #4A4A4A;
+}
+.error-box {
+	margin: 20px auto;
+	display: flex;
+    justify-content: center;
+	.code-error {
+		font-size: 100px;
+		line-height: 100px;
+	}
+	.text-error {
+		font-size: 20px;
+		margin-top: 5px;
+	}
+}
