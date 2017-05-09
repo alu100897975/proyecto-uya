@@ -1,20 +1,24 @@
 'use strict'
 var express = require('express'),
-    router = express.Router(),
+    bcrypt = require('bcryptjs'),
 
-    User = require('../models/user');
+    User = require('../models/user'),
+
+    router = express.Router();
 
 router.post('/', (req, res, next)=>{
     console.log(req.body);
     var user = new User({
         name: req.body.name,
         email: req.body.email,
-        password: req.body.password
+        password: bcrypt.hashSync(req.body.password, 10)
     });
-    user.save((err, result)=>{
-        if(err) res.send('Ha ocurrido un error al guardar el usuario');
-        else res.send('Usuario guardado');
-    })
+    user.save().then((result)=>{
+        res.send('Usuario guardado');
+    }).catch((reason)=>{
+        console.log('error', reason);
+        res.send('hubo un error');
+    });
 });
 
 module.exports = router

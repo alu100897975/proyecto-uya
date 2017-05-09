@@ -6,7 +6,7 @@ var express = require('express'),
     app = express(),
     port = process.env.PORT || 8080,
 
-    user = require('./routes/users');
+    userRoutes = require('./routes/user');
 
 mongoose.connect('localhost:27017/clasdy')
 
@@ -22,7 +22,7 @@ app.use(bodyParser.urlencoded({extended: true})); //form params in req.body
 app.use(express.static('public'));
 
 
-app.use('/user',user);
+app.use('/user',userRoutes);
 
 
 app.get('/', (req,res)=>{
