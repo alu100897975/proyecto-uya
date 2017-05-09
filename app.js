@@ -37,7 +37,9 @@ app.get('/signup', (req,res)=>{
 app.get('/signin', (req,res)=>{
     res.render('signin');
 })
-
+app.get('/*', (req,res)=>{
+    res.render('error', {code: 404, message: 'No encontrado'});
+})
 app.listen(port, (err)=>{
     if(err){
         console.log('error:',err);

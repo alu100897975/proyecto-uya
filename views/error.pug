@@ -1,0 +1,26 @@
+doctype
+html(lang='en')
+    head
+        meta(charset='utf-8')
+        title Error
+        link(href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet")
+        link(rel="stylesheet" href="css/styles.css")
+        link(rel="stylesheet" href="css/error.css")
+    body
+        header.main
+            .container
+                nav(class="flex justify-between align-center nav-links")
+                    ul
+                        li
+                            a(href="/" class="nav-link") Inicio
+                        li
+                            a(href="/#features" class="nav-link") Herramienta
+                        li
+                            a(href="/#subscription" class="nav-link") Suscríbete
+                    ul
+                        li
+                            a(href="/signin" class="btn btn-teal") Entrar
+        section
+            .error-box
+                .code-error= code
+                .text-error= message
