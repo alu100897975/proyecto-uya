@@ -30,7 +30,7 @@ html(lang='en')
                     .access-alt ¿Aún no tiene una cuenta?
                             a(href="/signup" class="underline") Registrate
                     
-                    form(action="#" method="method" class="access-form")
+                    form(action="/user/signin" method="POST" class="access-form")
                         .input-field
                             label(for="email") Email
                             input(type="email" placeholder="Introduce tu email" name="email" id="email" required)

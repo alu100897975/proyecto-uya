@@ -20,5 +20,18 @@ router.post('/', (req, res, next)=>{
         res.send('hubo un error');
     });
 });
-
+router.post('/signin', (req, res, next )=>{
+    User.findOne({email:req.body.email}, (err, user)=>{
+        if(err){
+            res.send('Hubo un error al buscar el usuario');
+        }
+        if(!user){
+            res.send('No se encontro ningun isuario');
+        }
+        if (!bcrypt.compareSync(req.body.password, user.password) ){
+            res.send('Contraseña errónea');
+        }
+        res.redirect('/home');
+    });
+})
 module.exports = router
