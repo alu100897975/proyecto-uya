@@ -1,93 +1,70 @@
-doctype
-html(lang='en')
-    head
-        meta(charset='utf-8')
-        title My Home
-        link(href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous")
-        
-        link(href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet")
-        link(rel="stylesheet" href="css/styles.css")
-        link(rel="stylesheet" href="css/home.css")
-        //link(rel="stylesheet" href="css/grid.css")
-    body
-        header.main
-            .container
-                nav(class="flex justify-between align-center nav-links")
+extends layouts/registered.pug
+
+block content
+    .section#my-home
+        .container
+            //.row
+                .col.s12.m8.offset-m2.l6.xl4
+            section.sidebar
+                .imp-events.sidebar-elem
+                    h1.sidebar-title EVENTOS IMPORTANTES
+                    table
+                        thead
+                            tr
+                                th Nombre del evento
+                                th Faltan
+                        tbody
+                            tr.imp-event
+                                td
+                                    a(href="#") Sistemas informaticos
+                                
+                                td 6 días
+                .reminders.sidebar-elem
+                    .sidebar-title
+                        h1.sidebar-title RECORDATORIOS
                     ul
-                        li
-                            a(href="/" class="nav-link") Inicio
-                        li
-                            a(href="/#features" class="nav-link") Asignaturas
-                        li
-                            a(href="/#subscription" class="nav-link") Calendario
-                    ul
-                        li
-                            a(href="/signin")
-                                i(class="fa fa-user-circle-o" aria-hidden="true" style="font-size: 30px")
-        .section#my-home
-            .container
-                //.row
-                    .col.s12.m8.offset-m2.l6.xl4
-                section.sidebar
-                    .imp-events.sidebar-elem
-                        h1.sidebar-title EVENTOS IMPORTANTES
-                        table
-                            thead
-                                tr
-                                    th Nombre del evento
-                                    th Faltan
-                            tbody
-                                tr.imp-event
-                                    td
-                                        a(href="#") Sistemas informaticos
-                                    
-                                    td 6 días
-                    .reminders.sidebar-elem
-                        .sidebar-title
-                            h1.sidebar-title RECORDATORIOS
-                        ul
-                            li.reminder
-                                .riminder-title Sistemas informaticos
-                                .checkbox
-                //.col.s12.m8.offset-m2.l6.xl8
-                .content
-                    .cal-line-points
-                        .cal-line
-                        .cal-points
-                            .cal-month.current
-                                .month-name septiembre
-                            .cal-day
-                                .cal-point.important
-                                .day 31D
-                            .cal-month.new
-                                .month-name octubre
-                            .cal-day
-                                .cal-point.not-important
-                                .day 1L
-                            .cal-day
-                                .cal-point.important
-                                .day 2
-                            .cal-day
-                                .cal-point
-                                .day 3
-                            .cal-day
-                                .cal-point
-                                .day 4
-                            .cal-day
-                                .cal-point
-                                .day 5
-                            .cal-day
-                                .cal-point
-                                .day 5
-                            .cal-day
-                                .cal-point
-                                .day 5
-                    .day-events.center-block
-                        header.day 4 de agosto
-                        .events
-                            .event.imp
-                                .event-name Sistemas informaticos
-                                .event-time 24:00
-                            .event.medium-imp
-                                .event-name Sistemas informaticos
-                                .event-time 24:00
+                        li.reminder
+                            .riminder-title Sistemas informaticos
+                            .checkbox
+            //.col.s12.m8.offset-m2.l6.xl8
+            .content
+                .cal-line-points
+                    .cal-line
+                    .cal-points
+                        .cal-month.current
+                            .month-name septiembre
+                        .cal-day
+                            .cal-point.important
+                            .day 31D
+                        .cal-month.new
+                            .month-name octubre
+                        .cal-day
+                            .cal-point.not-important
+                            .day 1L
+                        .cal-day
+                            .cal-point.important
+                            .day 2
+                        .cal-day
+                            .cal-point
+                            .day 3
+                        .cal-day
+                            .cal-point
+                            .day 4
+                        .cal-day
+                            .cal-point
+                            .day 5
+                        .cal-day
+                            .cal-point
+                            .day 5
+                        .cal-day
+                            .cal-point
+                            .day 5
+                .day-events.center-block
+                    header.day 4 de agosto
+                    .events
+                        .event.imp
+                            .event-name Sistemas informaticos
+                            .event-time 24:00
+                        .event.medium-imp
+                            .event-name Sistemas informaticos
+                            .event-time 24:00
