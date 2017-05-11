@@ -1,3 +1,6 @@
+$facebook: #385591;
+$google: #CC4634;
+
 header {
     background-color: #4A4A4A;
 }
@@ -42,5 +45,50 @@ header {
     &:hover, &:focus {
         color: #fff;
         background-color: teal;
+    }
+}
+
+// BEGIN ACCESS AUTH
+.access-auth {
+    margin-top: 20px;
+    .text {
+        font-size: 15px;
+    }
+    .auth-apps {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+
+        .auth-app {
+            color: #fff;
+            margin: 0px 20px;
+            display: flex;
+            align-items: center;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all ease-in-out .5s;
+            &:hover, &:focus {
+                transform: scale(1.2);
+            }
+            &.facebook-app{
+                background-color: $facebook;
+            }
+            &.google-app{
+                background-color: $google;
+            }
+            .app-icon{
+                font-size: 20px;
+                width: 40px;
+                height: 40px;
+                line-height: 40px;
+                text-align: center;
+                flex: none;
+                border-right: 1px solid #fff;
+            }
+            .app-name {
+                padding: 0 20px;
+                width: 100%;
+            }
+        }
     }
 }

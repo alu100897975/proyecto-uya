@@ -8,12 +8,12 @@ router.get('/login', (req,res)=>{
     res.render('login');
 })
 router.post('/signup', passport.authenticate('local-signup', {
-                    successRedirect: '/home',
+                    successRedirect: '/',
                     failureRedirect: '/join/signup'
                 }
 ));
 router.post('/login',passport.authenticate('local-login', {
-                    successRedirect: '/home',
+                    successRedirect: '/',
                     failureRedirect: '/join/login' }
             )
 );
@@ -23,7 +23,7 @@ router.get('/with-facebook',passport.authenticate('facebook', {scope: ['email']}
 
 router.get('/with-facebook/return',
             passport.authenticate('facebook', {
-                successRedirect: '/home',
+                successRedirect: '/',
                 failureRedirect: '/join/login'
             })
 );
@@ -35,7 +35,7 @@ router.get('/with-google',
             passport.authenticate('google', { scope: ['email', 'profile']} ));
 router.get('/with-google/return',
             passport.authenticate('google',{
-                successRedirect: '/home',
+                successRedirect: '/',
                 failureRedirect: '/join/login'
             })
 );
