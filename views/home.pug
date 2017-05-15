@@ -20,7 +20,7 @@ block content
                                         a(href="#")= event.name
                                     
                                     td= event.remaining
-                                        | días
+                                        |  días
                 //.reminders.sidebar-elem
                     .sidebar-title
                         h1.sidebar-title RECORDATORIOS
@@ -37,17 +37,17 @@ block content
                             .cal-month.current
                                 .month-name= month.name
                             each day in month.days
-                                .cal-day
+                                .cal-day(data-year= month.year data-month= month.date data-day= day.date)
                                     .cal-point
                                     .day= day.date
                                     
-                .day-events.center-block
+                .day-events.center-block#day-events
                     header.day
-                        span.date-day 4 de agosto
+                        span.date-day#date 4 de agosto
                         .actions
                             button.action#open-form-event
                                     i(class="fa fa-plus" aria-hidden="true")
-                    .events
+                    .events#events
                         .event.imp
                             .event-time 24:00
                             .event-name Sistemas informaticos
@@ -92,6 +92,7 @@ block content
                                 .submit.center
                                     input(type="submit" class="btn btn-red btn-small" value="Crear")
 block scripts
+    script(src="/public/js/events.js")
     script.
         $('#open-form-event, #close-form-event'). on('click',()=>{
             $('.form-event').toggleClass('open');
