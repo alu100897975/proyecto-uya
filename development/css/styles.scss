@@ -19,6 +19,11 @@ a {
 }
 
 // BEGIN CLASES GLOBALES
+section.content {
+    padding-top: 60px;
+    min-height: calc(100% - 80px);
+    box-sizing: border-box;
+}
 .container {
     max-width: 1000px;
     width: 90%;
@@ -100,6 +105,28 @@ a {
         box-sizing: border-box;
         font-size: 16px;
         font-weight: 300;
+        &:invalid {
+            border-color: #AAA;
+            box-shadow: 0 0 0px;
+        }
+    }
+    .valid-suggestion {
+        display: none;
+    }
+    &.field-error {
+        input {
+            border-color: #d23837;
+        }
+        .valid-suggestion {
+            display: block;
+            margin-top: 5px;
+            overflow: hidden;
+            font-size: 15px;
+            transition: all ease-in-out 1s;
+            color: #d23837;
+            text-align: left;
+            padding-left: 10px;
+        }
     }
 }
 .submit {
@@ -120,6 +147,7 @@ header.main {
     width: 100%;
     height: 60px;
     color: #fff;
+    position: fixed;
 }
 .nav-links {
     ul{

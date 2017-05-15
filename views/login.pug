@@ -1,23 +1,32 @@
 extends layouts/unregistered.pug
 
+block styles
+    link(rel="stylesheet" href="/public/css/access.css")
+
 block content
-    section
-        .container
-            .access-section.center-block
-                .access-title
-                    h1 Inicia sesión
-                .access-alt ¿Aún no tiene una cuenta?
-                        a(href="/join/signup" class="underline") Registrate
-                
-                form(action="/join/login" method="POST" class="access-form")
-                    .input-field
-                        label(for="email") Email
-                        input(type="email" placeholder="Introduce tu email" name="email" id="email" required)
-                    .input-field
-                        label(for="password") Contraseña
-                        input(type="password" placeholder="Introduce tu contraseña" name="password" id="password" required)
-                    .forgot-password
-                        a(href="#" class="underline") ¿Olvidaste tu contraseña?
-                    .submit
-                        input(type="submit" class="btn btn-c-teal" value="Inicia sesión")
-                include partials/auth-apps.pug
+    .container
+        .access-section.center-block
+            .access-title
+                h1 Inicia sesión
+            .access-alt ¿Aún no tiene una cuenta?
+                    a(href="/join/signup" class="underline") Registrate
+            
+            form(action="/join/login" method="POST" name="login-form" class="access-form" id="login-form")
+                .server-msg
+                .input-field
+                    label(for="email") Correo electrónico
+                    input(type="email" placeholder="Introduce tu correo electrónico" name="email" minLength="6" id="email" maxlength="64" required="true")
+                    .valid-suggestion
+                .input-field
+                    label(for="password") Contraseña
+                    input(type="password" placeholder="Introduce tu contraseña" minLength="6" maxlength="64" name="password" id="password" required="true")
+                    .valid-suggestion
+                .forgot-password
+                    a(href="#" class="underline") ¿Olvidaste tu contraseña?
+                .submit
+                    input(type="submit" class="btn btn-c-teal" value="Inicia sesión")
+            include partials/auth-apps.pug
+
+block scripts
+    script(src="/public/js/validate.js")
+    script(src="/public/js/access.js")

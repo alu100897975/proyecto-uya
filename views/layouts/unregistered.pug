@@ -7,8 +7,7 @@ html(lang='es')
         
         link(href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet")
         link(rel="stylesheet" href="/public/css/styles.css")
-        link(rel="stylesheet" href="/public/css/access.css")
-        link(rel="stylesheet" href="/public/css/error.css")
+        block styles
     body
         header.main
             .container
@@ -23,6 +22,15 @@ html(lang='es')
                     ul
                         li
                             a(href="/join/login" class="btn btn-teal") Entrar
-        block content
+        section.content
+            block content
         footer
             .container.center-xy © Copyright  2017
+        
+        script(
+			  src="https://code.jquery.com/jquery-2.2.4.min.js"
+			  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+			  crossorigin="anonymous"
+              )
+        block scripts
+        

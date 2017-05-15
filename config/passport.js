@@ -19,6 +19,7 @@ passport.serializeUser( (user, done)=>{
 
 // se ejecuta en cada peticion despues de iniciar sesión
 passport.deserializeUser( (id, done)=>{
+    console.log('desserialize:',id);
     User.findById(id, (err, user)=>{
         done(err, user);
     });
@@ -31,11 +32,21 @@ passport.use('local-login',
         passReqToCallback : true
     }, (req, email, password, done)=>{
         User.findOne({email: email}, (err, user)=>{
+            var messageCode = require('./html-status-messages');
+            if (err){
+                return done( messageCode(500) ); //500
+            }
+            if (!user)
+                return done( messageCode(401,'notFound')); // El usuario no existe
 
-            if (err) return done(err);
-            if (!user) return done(null,false);
-            if (!user.verifyPassword(password)) return done(null, false);
-            done(null,user);
+            if (!user.verifyPassword(password))
+                return done( messageCode(401,'incorrectPassword') ); // Contraseña incorrecta
+
+            req.logIn(user , (err)=>{
+                if(err) return done( messageCode(500) ); //500
+            });
+
+            done( messageCode(200) ); //200
         });
     }
 ))
@@ -46,17 +57,23 @@ passport.use('local-signup',
         passReqToCallback : true
     }, (req, email, password, done)=>{
         User.findOne({email: email}, (err, user)=>{
-            if (err) return done(err);
-            if (user) return done(null, false); //El usuario ya existe
+
+            var messageCode = require('./html-status-messages');
+
+            if (err) return done( messageCode(500) );
+            if (user) return done( messageCode(401, 'found') ); //El usuario ya existe
             var user = new User({
                 name: req.body.name,
                 email: email,
                 password: User.hashPassword(password)
             })
             user.save().then((result)=>{
-                done(null, user);
+                req.logIn(user , (err)=>{
+                    if(err) return done( messageCode(500) );
+                });
+                return done( messageCode(200) );
             }).catch((err)=>{
-                throw err;
+                return done( messageCode(500) );
             });
         });
     })

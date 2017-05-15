@@ -7,15 +7,22 @@ router.get('/signup', (req,res)=>{
 router.get('/login', (req,res)=>{
     res.render('login');
 })
-router.post('/signup', passport.authenticate('local-signup', {
-                    successRedirect: '/',
-                    failureRedirect: '/join/signup'
-                }
-));
-router.post('/login',passport.authenticate('local-login', {
-                    successRedirect: '/',
-                    failureRedirect: '/join/login' }
-            )
+router.post('/signup',
+    function(req,res){
+        passport.authenticate('local-signup', function(validation){
+            console.log(validation.code, validation.msg)
+            res.status(validation.code).json({message: validation.msg});
+        })(req,res);
+    }
+);
+
+router.post('/login',
+    function(req, res){
+        passport.authenticate('local-login', function(validation){
+            console.log(validation.code, validation.msg)
+            res.status(validation.code).json({message: validation.msg});
+        })(req,res);
+    }
 );
 
 //Login con Facebook
