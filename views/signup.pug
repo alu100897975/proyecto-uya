@@ -15,15 +15,15 @@ block content
                 .server-msg
                 .input-field
                     label(for="name") Nombre
-                    input(type="text" placeholder="Introduce tu nombre" name="name" minlenght="6" maxlength="64" id="name" required="true")
+                    input(type="text" placeholder="Introduce tu nombre" class="input input-text" name="name" minlenght="6" maxlength="64" id="name" required="true")
                     .valid-suggestion
                 .input-field
                     label(for="email") Email
-                    input(type="email" placeholder="Introduce tu correo electrónico" minlenght="6" name="email" id="email" maxlength="64" required="true")
+                    input(type="email" placeholder="Introduce tu correo electrónico" class="input input-text" minlenght="6" name="email" id="email" maxlength="64" required="true")
                     .valid-suggestion
                 .input-field
                     label(for="password") Contraseña
-                    input(type="password" placeholder="Introduce tu contraseña" minlength="6" maxlength="64" name="password" id="password" required="true")
+                    input(type="password" placeholder="Introduce tu contraseña" minlength="6" class="input input-text" maxlength="64" name="password" id="password" required="true")
                     .valid-suggestion
                 .submit
                     input(type="submit" class="btn btn-c-teal" value="Registrarse")

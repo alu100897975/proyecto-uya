@@ -7,7 +7,6 @@ header.main {
     width: 300px;
     border: 1px solid rgb(232, 235, 237);
     display: inline-block;
-    border-radius: 10px;
     float: left; // borrar
     .sidebar-title {
         font-size: 14px;
@@ -18,15 +17,15 @@ header.main {
     }
     .sidebar-elem {
         margin-top: 10px;
-        height: 300px;
     }
     .imp-events {
-        border-bottom: 1px solid rgb(232, 235, 237);
         .imp-event{
             background: rgb(237, 241, 245);
             border-bottom: 1px solid #fff;
             font-size: 15px;
-
+        }
+        .imp-event:last-child{
+            border-bottom: 1px solid transparent;
         }
         table {
             border-collapse: collapse;
@@ -184,10 +183,64 @@ header.main {
     border: 1px solid rgb(232, 235, 237);
     border-radius: 0 0 10px 10px;
     box-sizing: border-box;
+    position: relative;
+    .form-event {
+        display: none;
+        position: absolute;
+        border-radius: 5px;
+        background: teal;
+        color: #fff;
+        right: 10px;
+        z-index: 20;
+        top: 50px;
+        padding: 20px 20px;
+        &.open {
+            display: block;
+        }
+        &::before {
+            content: '';
+            position: absolute;
+            border-bottom: 5px solid teal;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            bottom: 100%;
+            right: 10px;
+        }
+        .close {
+            position: absolute;
+            right: 15px;
+            font-size: 20px;
+            top: 10px;
+            cursor: pointer;
+        }
+    }
+    .actions {
+        flex: none;
+        flex-basis: 60px;
+        display: flex;
+        align-items: center;
+        height: 100%;
+        justify-content: center;
+        .action {
+            border: 0px;
+            font-size: 18px;
+            margin: 0 5px;
+            cursor: pointer;
+            background: none;
+            &.create {
+                position: relative;
+            }
+        }
+    }
     .day {
-        padding:10px;
-        font-weight: 500;
-        font-size: 18px;
+        display: flex;
+        height: 50px;
+        align-items: center;
+        .date-day{
+            width: 100%;
+            margin-left: 20px;
+            font-size: 18px;
+        }
     }
     .events {
 
@@ -219,9 +272,30 @@ header.main {
                 width: 100%;
             }
             .event-time {
-                margin-right: 10px;
+                height: 100%;
+                border-right: 1px solid #DADADA;
+                font-size: 14px;
+                flex: none;
+                width: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .event-actions {
+                opacity: 0;
+                transition: all ease-in-out .3s;
+                .actions {
+                    color: #555;
+                }
+
+            }
+            &:hover {
+                .event-actions {
+                    opacity: 1;
+                }
             }
         }
     }
 }
+
 /*END EVENTOS DEL DIA*/

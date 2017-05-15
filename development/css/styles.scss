@@ -83,7 +83,46 @@ section.content {
         background-color: $red;
         border-color: transparent;
     }
+    &.btn-small{
+        padding-top: 7px;
+        padding-bottom: 7px;
+        border-radius: 15px;
+    }
 }
+.form-small {
+    .input-field {
+        margin-top: 5px;
+        .input {
+            margin-top: 3px;
+            height: 25px;
+            font-size: 13px;
+            &.input-number {
+                width: 50px;
+            }
+        }
+
+    }
+    .submit {
+        margin-top: 15px;
+    }
+}
+.input-group {
+    display: flex;
+    .input-field{
+        margin-left: 5px;
+        margin-right: 5px;
+        input {
+            text-align: center;
+        }
+    }
+    .input-field:first-child{
+        margin-left: 0px;
+    }
+    .input-field:last-child{
+        margin-right: 0px;
+    }
+}
+
 .input-field {
     margin-top: 15px;
     text-align: left;
@@ -91,22 +130,36 @@ section.content {
     label {
         font-size: 15px;
         color: inherit;
+        
     }
+
+
     .input {
         margin-top: 10px;
         border-radius: 5px;
         border: 1px solid #4A4A4A;
-        width: 100%;
+        display: block;
         height: 40px;
         font-size: 16px;
         font-weight: 300;
         transition: all .5s;
         box-sizing: border-box;
         &.input-text {
-            display: block;
+            width: 100%;
             padding-left: 7px;
         }
+        &.input-number {
+            width: 60px;
+            -moz-appearance: textfield;
+            appearance: textfield;
+
+            &::-webkit-outer-spin-button,
+            &::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+            }
+        }
         &.transparent {
+            color: #fff;
             &::placeholder {
                 color: #fff;
             }
@@ -144,9 +197,13 @@ section.content {
             padding-left: 10px;
         }
     }
+
 }
 .submit {
     margin-top: 20px;
+    &.center {
+        text-align: center;
+    }
 }
 
 .center-block {

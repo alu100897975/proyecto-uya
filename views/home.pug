@@ -14,12 +14,14 @@ block content
                                 th Nombre del evento
                                 th Faltan
                         tbody
-                            tr.imp-event
-                                td
-                                    a(href="#") Sistemas informaticos
-                                
-                                td 6 días
-                .reminders.sidebar-elem
+                            for event in events
+                                tr.imp-event
+                                    td
+                                        a(href="#")= event.name
+                                    
+                                    td= event.remaining
+                                        | días
+                //.reminders.sidebar-elem
                     .sidebar-title
                         h1.sidebar-title RECORDATORIOS
                     ul
@@ -27,44 +29,70 @@ block content
                             .riminder-title Sistemas informaticos
                             .checkbox
             //.col.s12.m8.offset-m2.l6.xl8
-            .content
+            .caldendar(style="float: right;")
                 .cal-line-points
                     .cal-line
                     .cal-points
-                        .cal-month.current
-                            .month-name septiembre
-                        .cal-day
-                            .cal-point.important
-                            .day 31D
-                        .cal-month.new
-                            .month-name octubre
-                        .cal-day
-                            .cal-point.not-important
-                            .day 1L
-                        .cal-day
-                            .cal-point.important
-                            .day 2
-                        .cal-day
-                            .cal-point
-                            .day 3
-                        .cal-day
-                            .cal-point
-                            .day 4
-                        .cal-day
-                            .cal-point
-                            .day 5
-                        .cal-day
-                            .cal-point
-                            .day 5
-                        .cal-day
-                            .cal-point
-                            .day 5
+                        for month in months
+                            .cal-month.current
+                                .month-name= month.name
+                            each day in month.days
+                                .cal-day
+                                    .cal-point
+                                    .day= day.date
+                                    
                 .day-events.center-block
-                    header.day 4 de agosto
+                    header.day
+                        span.date-day 4 de agosto
+                        .actions
+                            button.action#open-form-event
+                                    i(class="fa fa-plus" aria-hidden="true")
                     .events
                         .event.imp
-                            .event-name Sistemas informaticos
                             .event-time 24:00
+                            .event-name Sistemas informaticos
                         .event.medium-imp
+                            .event-time 4:00
                             .event-name Sistemas informaticos
-                            .event-time 24:00
+                            .event-actions.actions
+                                button.action.edit
+                                    i(class="fa fa-pencil" aria-hidden="true")
+                                button.action.remove
+                                    i(class="fa fa-trash" aria-hidden="true")
+                    .form-event
+                            .close#close-form-event
+                                i(class="fa fa-times" aria-hidden="true")
+
+                            form(action="/event" method="POST" class="form-small" name="newEvent")
+
+                                .input-field
+                                    label(for="name") Evento
+                                    input(type="text" id="name" name="name" class="input input-text" placeholder="Nombre del evento" required)
+                                    
+                                .input-group
+                                    .input-field
+                                        label(for="day") Dia
+                                        input(type="number" id="day" name="day" class="input input-number" min="0" max="31" placeholder="7" required)
+                                    .input-field
+                                        label(for="month") Mes
+                                        input(type="number" id="month" name="month" class="input input-number" min="0" max="12" placeholder="7" required)
+                                    .input-field
+                                        label(for="year") Año
+                                        input(type="number" id="year" name="year" class="input input-number" value="2017" min="2017" max="2018" placeholder="2017" required)
+                                .input-group
+                                    .input-field
+                                        label(for="hour") Hora
+                                        input(type="number" id="hour" name="hour" class="input input-number" min="0" max="24" placeholder="7" required)
+                                    .input-field
+                                        label(for="minutes") Minutos
+                                        input(type="number" id="minutes" name="minutes" class="input input-number" min="0" max="60" placeholder="35" required)
+                                    .input-field
+                                        label(for="level") ¿Importante?
+                                        input(type="checkbox" name="level" class="input center-block")
+                                .submit.center
+                                    input(type="submit" class="btn btn-red btn-small" value="Crear")
+block scripts
+    script.
+        $('#open-form-event, #close-form-event'). on('click',()=>{
+            $('.form-event').toggleClass('open');
+        });

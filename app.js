@@ -16,7 +16,7 @@ mongoose.connect('localhost:27017/clasdy')
 app.use(sass({ //Poner middleware sass antes de express.static
     src: __dirname + '/development',
     dest: __dirname + '/public',
-    debug: true,
+    //debug: true,
     prefix:  '/public'
 }));
 
@@ -38,7 +38,11 @@ app.use((req,res,next)=>{
     res.header('Allow', 'GET, POST, PUT DELETE');
     next();
 })
-
+app.use((req,res,next)=>{
+    console.log("parametros pasados");
+    console.log(req.body);
+    next();
+})
 
 app.use(function isLoggedIn(req, res, next) {
 
@@ -63,6 +67,7 @@ function isAuthenticated(req,res,next){
 
 // Rutas para usuarios no autenticados
 app.use('/join',isUnauthenticated, require('./routes/auth')); //Rutas de acceso
+app.use('/event', require('./routes/event'));
 
 // Rutas para usuarios autenticados
 app.get('/logout',isAuthenticated, (req,res)=>{
@@ -72,8 +77,23 @@ app.get('/logout',isAuthenticated, (req,res)=>{
     });
 });
 app.get('/', (req,res)=>{
-    if(req.isAuthenticated())
-        return res.render('home');
+    if(req.isAuthenticated()){
+        var Event = require('./models/event');
+        var UtilDate = require('./models/date');
+        var months = UtilDate.daysToShow();
+        console.log(months);
+        Event.find({user: req.user.id, important: true}, (err, events)=>{
+            if(err){
+                res.send("no se pudieron cargar tus eventos");
+            }
+            if(events) {
+                UtilDate.remainingDaysEvent(events);
+                console.log(events);
+                res.render('home',{events: events, months: months});
+            }
+        });
+        return
+    }
     res.render('index');
 });
 
