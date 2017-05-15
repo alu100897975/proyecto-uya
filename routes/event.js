@@ -30,4 +30,19 @@ router.post('/', (req, res)=>{
 
     })
 });
+router.get('/:year/:month/:day', (req,res)=>{
+    var date = req.params;
+    // 59190da7c3b545080c377966
+    console.log(date);
+    DayEvent.find({user: req.user.id , "date.day":date.day, "date.year":date.year, "date.month":date.month},
+        (err, events)=>{
+            if(err)
+                return res.status(500).json({message: "Error al buscar los eventos"});
+            if (!events)
+                return res.status(204).json({message: "No se encontro ningun evento"});
+            console.log(events);
+            res.status(200).json({message: 'Ok', events: events});
+        }
+    );
+})
 module.exports = router;

@@ -11,7 +11,7 @@ var CURRENT_DATE = {
 
 function initializeCalendar(year_number) {
     return {
-        number: year_number,
+        date: year_number,
         months: {
             1: {name: 'Enero', days: 31},
             2: {name: 'Febrero', days:  year_number % 4 == 0? 29 : 28}, //por si es año bisiesto
@@ -29,7 +29,8 @@ function initializeCalendar(year_number) {
     };
 }
 
-function arrayDays(day, month, limit, day_in_week){
+function arrayDays(day, year,month_int ,limit, day_in_week){
+    var month = year.months[month_int];
     var monthDays = new Array(limit);
     for(var i=0; i<limit; i++){
         var date = day+i;
@@ -38,13 +39,15 @@ function arrayDays(day, month, limit, day_in_week){
     }
     return {
         name: month.name,
-        days: monthDays
+        date: month_int,
+        days: monthDays,
+        year: year.date
     }
 }
 function changeMonth(month, year){
 
     if(++month > 12){
-        year = initializeCalendar(year.number+1); //Volver a inicialize por si se cambia a un año bisiesto
+        year = initializeCalendar(year.date+1); //Volver a inicialize por si se cambia a un año bisiesto
         return 1; //Enero
     }
     return  month;
@@ -66,10 +69,10 @@ function daysToShow(days_to_show=7){
         // console.log("dia", pointer_day);
         // console.log("resto de dias para que termine el mes",res_of_days);
         if(res_of_days > days_to_show){ //Hay mas dias restantes del mes que dias que mostrar. No se cambia de mes
-            months.push(arrayDays(pointer_day, month, days_to_show, day_in_week));
+            months.push(arrayDays(pointer_day, year,month_int, days_to_show, day_in_week));
             days_to_show = 0;
         }else { //Se cambia de mes
-            months.push(arrayDays(pointer_day, month, res_of_days, day_in_week));
+            months.push(arrayDays(pointer_day, year,month_int, res_of_days, day_in_week));
             pointer_day = 1; //principio de mes
             day_in_week = (day_in_week + res_of_days)% 7;
             days_to_show -= res_of_days;
