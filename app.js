@@ -7,6 +7,8 @@ var express = require('express'),
     cookieParser = require('cookie-parser'),
     app = express(),
     port = process.env.PORT || 8080,
+    server = require('http').Server(app),
+    io = require('socket.io')(server),
 
     passport = require('./config/passport');
 
@@ -97,10 +99,35 @@ app.get('/', (req,res)=>{
     res.render('index');
 });
 
+app.get('/chat', (req, res)=>{
+  if(req.isAuthenticated())
+    res.render('chat');
+  //res.render('index');
+});
+
+var messages = [{
+    id: 1,
+    text: 'Bienvenido al chat',
+    nickname: 'Bot'
+}]; //Array de mensajes.
+
+io.on('connection', function(socket){
+    console.log("El equipo con IP "+socket.handshake.address+" se ha conectado.");
+
+    socket.emit('messages', messages);
+    //console.log(messages);
+
+    socket.on('add-message', function(data){
+      messages.push(data);
+
+      io.sockets.emit('messages', messages);
+    })
+});
+
 app.use(function(req, res, next) {
   res.status(404).render('error', {code: 404, message: 'No encontrado'});
 });
-app.listen(port, (err)=>{
+server.listen(port, (err)=>{
     if(err){
         console.log('error:',err);
         return;

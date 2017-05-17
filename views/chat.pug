@@ -1,0 +1,14 @@
+extends layouts/registered.pug
+
+block content
+  body
+    h1.sidebar-title Chatea con tus compañeros
+    div(id="messages")
+    form(onsubmit="return addMessage(this);")
+      input(type="text" id="nickname")
+      textarea(id="text" placeholder="Mensaje")
+      input(type="submit" value="Enviar")
+        
+block scripts
+  script(src="/socket.io/socket.io.js")
+  script(src="/public/js/client_chat.js")
