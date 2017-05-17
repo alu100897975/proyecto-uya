@@ -14,7 +14,7 @@ var express = require('express'),
 
 
 
-mongoose.connect('localhost:27017/clasdy')
+mongoose.connect('localhost:27017/clasdy');
 app.use(sass({ //Poner middleware sass antes de express.static
     src: __dirname + '/development',
     dest: __dirname + '/public',

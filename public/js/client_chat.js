@@ -22,11 +22,9 @@ function render(data){
 
 function addMessage(e){
   var message = {
-    nickname: document.getElementById('nickname').value,
+    nickname: window.localStorage.name,
     text: document.getElementById('text').value
   };
-
-  document.getElementById('nickname').style.display = 'none';
 
   socket.emit('add-message', message);
   return false;

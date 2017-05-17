@@ -11,7 +11,7 @@ router.post('/signup',
     function(req,res){
         passport.authenticate('local-signup', function(validation){
             console.log(validation.code, validation.msg)
-            res.status(validation.code).json({message: validation.msg});
+            res.status(validation.code).json({message: validation.msg, username: validation.username});
         })(req,res);
     }
 );
@@ -20,7 +20,7 @@ router.post('/login',
     function(req, res){
         passport.authenticate('local-login', function(validation){
             console.log(validation.code, validation.msg)
-            res.status(validation.code).json({message: validation.msg});
+            res.status(validation.code).json({message: validation.msg, username: validation.username});
         })(req,res);
     }
 );
@@ -32,7 +32,8 @@ router.get('/with-facebook/return',
             passport.authenticate('facebook', {
                 successRedirect: '/',
                 failureRedirect: '/join/login'
-            })
+              }
+            )
 );
 
 

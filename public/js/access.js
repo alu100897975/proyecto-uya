@@ -37,6 +37,7 @@ $('.access-form').on('submit', function(e){
             data: $(form).serialize(),
             success: function(data){
                 window.location.href="/";
+                if(window.localStorage) localStorage.name = data.username;
             },
             error: function(res){
 

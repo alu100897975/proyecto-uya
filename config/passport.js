@@ -45,8 +45,10 @@ passport.use('local-login',
             req.logIn(user , (err)=>{
                 if(err) return done( messageCode(500) ); //500
             });
+            var response = messageCode(200);
+            response.username = user.name;
 
-            done( messageCode(200) ); //200
+            done( response ); //200
         });
     }
 ))
@@ -71,7 +73,7 @@ passport.use('local-signup',
                 req.logIn(user , (err)=>{
                     if(err) return done( messageCode(500) );
                 });
-                return done( messageCode(200) );
+                return done( response );
             }).catch((err)=>{
                 return done( messageCode(500) );
             });
