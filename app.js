@@ -81,16 +81,20 @@ app.get('/logout',isAuthenticated, (req,res)=>{
 app.get('/', (req,res)=>{
     if(req.isAuthenticated()){
         var Event = require('./models/event');
-        var UtilDate = require('./models/date');
-        var months = UtilDate.daysToShow();
+        var Calendar = require('calendar-util');
+
+        var calendar = new Calendar();
+        var months = calendar.nextDays(7);
         console.log(months);
         Event.find({user: req.user.id, important: true}, (err, events)=>{
             if(err){
                 res.send("no se pudieron cargar tus eventos");
             }
             if(events) {
-                UtilDate.remainingDaysEvent(events);
-                console.log(events);
+                var dateEvents = events.map(function(event){
+                  return event.date;
+                })
+                calendar.remainingDays(dateEvents);
                 res.render('home',{events: events, months: months});
             }
         });

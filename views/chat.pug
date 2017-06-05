@@ -6,7 +6,7 @@ block content
     div(id="messages")
     form(onsubmit="return addMessage(this);")
       textarea(id="text" placeholder="Mensaje")
-      input(type="submit" value="Enviar")
+      input(id="boton-mensaje" type="submit" value="Enviar")
         
 block scripts
   script(src="/socket.io/socket.io.js")
