@@ -1,0 +1,286 @@
+header.main {
+  background-color: #444; }
+
+/* BEGIN SIDEBAR */
+.sidebar {
+  margin-top: 20px;
+  width: 300px;
+  border: 1px solid #e8ebed;
+  display: inline-block;
+  float: left;
+  /* BEGIN REMINDES */
+  /* END REMINDES */ }
+  .sidebar .sidebar-title {
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    text-transform: uppercase;
+    color: #444; }
+  .sidebar .sidebar-elem {
+    margin-top: 10px; }
+  .sidebar .imp-events .imp-event {
+    background: #edf1f5;
+    border-bottom: 1px solid #fff;
+    font-size: 15px; }
+  .sidebar .imp-events .imp-event:last-child {
+    border-bottom: 1px solid transparent; }
+  .sidebar .imp-events table {
+    border-collapse: collapse;
+    text-align: left;
+    width: 100%; }
+    .sidebar .imp-events table th {
+      font-size: 14px;
+      font-weight: 500;
+      padding: 10px; }
+    .sidebar .imp-events table td {
+      height: 50px;
+      padding: 0 5px; }
+  .sidebar .reminders ul {
+    list-style-type: none;
+    margin-top: 10px; }
+  .sidebar .reminders .reminder {
+    display: flex;
+    height: 50px;
+    border-bottom: 1px solid #fff;
+    align-items: center;
+    background: #edf1f5;
+    font-size: 15px; }
+    .sidebar .reminders .reminder .checkbox {
+      margin-right: 20px;
+      background-color: teal;
+      border-radius: 5px;
+      height: 30px;
+      width: 30px;
+      flex: none; }
+    .sidebar .reminders .reminder .riminder-title {
+      width: 100%;
+      padding-left: 5px; }
+
+/* END SIDEBAR */
+.content {
+  overflow: hidden; }
+
+/* PUNTOS-DIAS DE CALENDARIO*/
+.cal-month.new {
+  width: 20px;
+  position: relative;
+  background-color: inherit; }
+  .cal-month.new .month-name {
+    margin-left: 100%; }
+
+.cal-month.current {
+  width: 0px; }
+  .cal-month.current .month-name {
+    bottom: 60px; }
+
+.cal-month .month-name {
+  letter-spacing: .3px;
+  text-transform: uppercase;
+  font-size: 13px;
+  position: relative;
+  bottom: 40px;
+  color: #444;
+  font-weight: 400; }
+
+.cal-line-points {
+  margin: 100px auto;
+  position: relative;
+  max-width: 500px; }
+  .cal-line-points .cal-line {
+    width: 100%;
+    height: 2px;
+    background-color: #DADADA;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto 0; }
+  .cal-line-points .cal-points {
+    background-color: #fff;
+    display: flex; }
+    .cal-line-points .cal-points .cal-day:first-child {
+      margin-left: 0px; }
+  .cal-line-points .cal-day {
+    position: relative;
+    transition: all ease-in-out .3s;
+    margin: 0 4%;
+    z-index: 20; }
+    .cal-line-points .cal-day .day {
+      position: absolute;
+      margin-top: 8px;
+      display: inline-block;
+      left: 50%;
+      transform: translatex(-50%); }
+    .cal-line-points .cal-day:hover, .cal-line-points .cal-day:focus {
+      transform: scale(2.2); }
+      .cal-line-points .cal-day:hover .cal-point, .cal-line-points .cal-day:focus .cal-point {
+        box-shadow: 0 0 5px #444;
+        transform: rotate(45deg);
+        border-radius: 50% 50%  0 50%; }
+        .cal-line-points .cal-day:hover .cal-point:before, .cal-line-points .cal-day:focus .cal-point:before {
+          border-radius: 50% 50%  0 50%;
+          opacity: 1; }
+  .cal-line-points .cal-point {
+    width: 20px;
+    height: 20px;
+    background-color: gray;
+    border-radius: 50%;
+    transition: all ease-in-out .4s;
+    transform: rotate(45deg); }
+    .cal-line-points .cal-point.important {
+      background-color: red; }
+    .cal-line-points .cal-point.not-important {
+      background-color: #428bca; }
+    .cal-line-points .cal-point:before {
+      position: absolute;
+      content: '';
+      width: 40%;
+      height: 40%;
+      background-color: #fff;
+      border-radius: 50%;
+      margin: auto;
+      transition: all ease-in-out .5s;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0; }
+
+/*BEGIN EVENTOS DEL DIA*/
+.day-events {
+  width: 450px;
+  border: 1px solid #e8ebed;
+  border-radius: 0 0 10px 10px;
+  box-sizing: border-box;
+  position: relative; }
+  .day-events .form-event {
+    display: none;
+    position: absolute;
+    border-radius: 5px;
+    background: teal;
+    color: #fff;
+    right: 10px;
+    z-index: 20;
+    top: 50px;
+    padding: 20px 20px; }
+    .day-events .form-event.open {
+      display: block; }
+    .day-events .form-event::before {
+      content: '';
+      position: absolute;
+      border-bottom: 5px solid teal;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      bottom: 100%;
+      right: 10px; }
+    .day-events .form-event .close {
+      position: absolute;
+      right: 15px;
+      font-size: 20px;
+      top: 10px;
+      cursor: pointer; }
+  .day-events .actions {
+    flex: none;
+    flex-basis: 60px;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    justify-content: center; }
+    .day-events .actions .action {
+      border: 0px;
+      font-size: 18px;
+      margin: 0 5px;
+      cursor: pointer;
+      background: none; }
+      .day-events .actions .action.create {
+        position: relative; }
+  .day-events .day {
+    display: flex;
+    height: 50px;
+    align-items: center; }
+    .day-events .day .date-day {
+      width: 100%;
+      margin-left: 20px;
+      font-size: 18px; }
+  .day-events .events {
+    box-sizing: border-box;
+    width: 100%;
+    height: 300px; }
+    .day-events .events .event:first-child {
+      margin-top: 0px; }
+    .day-events .events .event {
+      background-color: #edf1f5;
+      margin-top: 2px;
+      height: 50px;
+      width: 100%;
+      display: flex;
+      align-items: center; }
+      .day-events .events .event.imp {
+        border-left: 4px solid red; }
+      .day-events .events .event.medium-imp {
+        border-left: 4px solid yellow; }
+      .day-events .events .event.not-imp {
+        border-left: 4px solid green; }
+      .day-events .events .event .event-name {
+        margin-left: 10px;
+        width: 100%; }
+      .day-events .events .event .event-time {
+        height: 100%;
+        border-right: 1px solid #DADADA;
+        font-size: 14px;
+        flex: none;
+        width: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center; }
+      .day-events .events .event .event-actions {
+        opacity: 0;
+        transition: all ease-in-out .3s; }
+        .day-events .events .event .event-actions .actions {
+          color: #555; }
+      .day-events .events .event:hover .event-actions {
+        opacity: 1; }
+
+/*END EVENTOS DEL DIA*/
+/*CHAT*/
+* {
+  padding: 0;
+  margin: 0; }
+
+#messages {
+  width: 95%;
+  max-width: 800px;
+  margin-top: 50px;
+  margin-left: 340px;
+  height: 350px;
+  overflow: scroll;
+  border: 1px solid #eee;
+  box-shadow: 0px 0px 20px #ccc inset; }
+
+  #text{
+    border-radius: 10px;
+    resize: none;
+    margin-top: 10px;
+    margin-left: 340px;
+  	border: solid 1px #4193BF;
+  	outline: none;
+  	padding: 10px;
+  	width: 310px;
+  }
+
+  #boton-mensaje{
+    border: 0;
+    margin-left: 10px;
+  	background-color: #4193BF;
+  	color: white;
+  	font-size: 15px;
+  	padding: 8px;
+  	width: 70px;
+  }
+
+.message {
+  margin: 20px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background: white; }
+
+/*END CHAT*/
