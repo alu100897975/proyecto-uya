@@ -283,4 +283,14 @@ header.main {
   border: 1px solid #ccc;
   background: white; }
 
+#titulo{
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  text-transform: uppercase;
+  color: #444;
+  margin-left: 100px;
+  margin-top: 80px;
+}
+
 /*END CHAT*/

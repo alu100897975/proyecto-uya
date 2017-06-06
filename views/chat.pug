@@ -2,7 +2,7 @@ extends layouts/registered.pug
 
 block content
   body
-    h1.sidebar-title Chatea con tus compañeros
+    h1(id="titulo") Chatea con tus compañeros
     div(id="messages")
     form(onsubmit="return addMessage(this);")
       textarea(id="text" placeholder="Mensaje")
