@@ -1,7 +1,7 @@
 'use strict'
 var express = require('express'),
     bodyParser = require('body-parser'),
-    sass = require('node-sass-middleware'),
+    // sass = require('node-sass-middleware'),
     mongoose = require('mongoose'),
     session = require('express-session'),
     cookieParser = require('cookie-parser'),
@@ -14,13 +14,13 @@ var express = require('express'),
 
 
 
-mongoose.connect('localhost:27017/clasdy');
-app.use(sass({ //Poner middleware sass antes de express.static
-    src: __dirname + '/development',
-    dest: __dirname + '/public',
-    //debug: true,
-    prefix:  '/public'
-}));
+//mongoose.connect('localhost:27017/clasdy');
+// app.use(sass({ //Poner middleware sass antes de express.static
+//     src: __dirname + '/development',
+//     dest: __dirname + '/public',
+//     //debug: true,
+//     prefix:  '/public'
+// }));
 
 app.use('/public',express.static(__dirname + '/public')); //Poner arriba para evitar serializacion en cada peticion
 app.set('views', __dirname + '/views');
@@ -40,11 +40,11 @@ app.use((req,res,next)=>{
     res.header('Allow', 'GET, POST, PUT DELETE');
     next();
 })
-app.use((req,res,next)=>{
-    console.log("parametros pasados");
-    console.log(req.body);
-    next();
-})
+// app.use((req,res,next)=>{
+//     console.log("parametros pasados");
+//     console.log(req.body);
+//     next();
+// })
 
 app.use(function isLoggedIn(req, res, next) {
 
@@ -78,7 +78,11 @@ app.get('/logout',isAuthenticated, (req,res)=>{
         res.redirect('/');
     });
 });
+app.get('/home', (req,res)=>{
+    res.render('home');
+});
 app.get('/', (req,res)=>{
+    /*
     if(req.isAuthenticated()){
         var Event = require('./models/event');
         var Calendar = require('calendar-util');
@@ -100,6 +104,7 @@ app.get('/', (req,res)=>{
         });
         return
     }
+    */
     res.render('index');
 });
 
