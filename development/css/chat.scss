@@ -1,8 +1,22 @@
 /*CHAT*/
-* {
-  padding: 0;
-  margin: 0; }
-
+.navbar.navbar-default {
+    height: auto;
+    line-height: normal;
+    box-shadow: none;
+    li {
+        float: none;
+    }
+    a {
+        color: #333 !important;
+    }
+    i {
+        height: auto;
+    }
+}
+.btn {
+    text-transform: none;
+    line-height: normal;
+}
 #messages {
   /*width: 95%;
   max-width: 800px;

@@ -7,8 +7,10 @@ head
   link(href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous")
   
   link(href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet")
-  link(rel="stylesheet" href="/public/css/chat.css")
+  link(rel="stylesheet" href="/public/css/styles.css")
   link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css")
+  link(rel="stylesheet" href="/public/css/framywork.css")
+  link(rel="stylesheet" href="/public/css/chat.css")
   
 body
   header.main
@@ -30,6 +32,10 @@ body
                   .navbar-logo.logo
                       a(href="/") Clasdy
                   .flex-expand-w.align-right
+                      ul.navbar-menu
+                          li
+                              button.not-navbar-link
+                                  i(class="fa fa-user-circle-o" aria-hidden="true" style="font-size: 25px")
   section.content
       div(class="container")
         h1(id="titulo") Chatea con tus compañeros
@@ -43,7 +49,7 @@ body
               div(class="input-field col s10 m10 l10")
                 input(type="text" id="text" placeholder="Mensaje..." class="validate")
               div(class="col s2 m2 l2")
-                button(class="btn waves-effect waves-light" id="boton-mensaje" type="submit" name="action") Enviar
+                button(class="btn waves-effect waves-light btn-outline-teal" id="boton-mensaje" type="submit" name="action") Enviar
   footer
       .container © Copyright  2017
 script(
