@@ -1,0 +1,78 @@
+
+/* BEGIN CONTAINER STYLES */
+.container-fluid, .container {
+    max-width: 1000px;
+    margin: 0 auto;
+    width: 100%;
+}
+.container {
+    padding-right: 10px;
+    padding-left: 10px;
+}
+.container-flex {
+    display: flex;
+}
+.flex-column {
+    flex-direction: column;
+}
+.flex-wrap {
+    flex-wrap: wrap;
+}
+.flex-expand-w {
+    width: 0px;
+    flex-grow: 1;
+}
+.flex-expand-h {
+    align-self: stretch;
+}
+.top {
+    align-items: flex-start;
+}
+.middle {
+    align-items: center;
+}
+.bottom {
+    align-items: flex-end;
+}
+.right {
+    justify-content: flex-end;
+}
+.left {
+    justify-content: flex-start;
+}
+.center {
+    justify-content: center;
+}
+
+.align-right {
+    text-align: right;
+}
+.align-center {
+    text-align: center;
+}
+.align-left {
+    text-align: left;
+}
+/* END CONTAINER STYLES */
+
+
+/* BEGIN ROW STYLES */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    &.reverse {
+        flex-direction: row-reverse;
+    }
+}
+/* END ROW STYLES */
+
+
+
+/* MIXIN HELPER */
+
+@mixin flex-center($c: 'items', $x: 'center', $y: 'center'){
+    display: flex;
+    align-#{$c}: #{$y};
+    justify-content: #{$x};
+}

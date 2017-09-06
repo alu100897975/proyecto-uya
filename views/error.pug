@@ -3,7 +3,10 @@ block styles
     link(rel="stylesheet" href="/public/css/error.css")
 
 block content
-    section
-        .error-box
+    //No funciona bien en dispositivos mobiles, usar centrado absoluto
+    .container-flex.center
+        .error
+            .text-error
+                h4= message
             .code-error= code
-            .text-error= message
+            

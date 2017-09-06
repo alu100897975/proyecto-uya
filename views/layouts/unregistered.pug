@@ -2,35 +2,53 @@ doctype
 html(lang='es')
     head
         meta(charset='utf-8')
-        title My Home
+        meta(name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1")
+        title Clasdy
         link(href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous")
         
         link(href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet")
-        link(rel="stylesheet" href="/public/css/styles.css")
+        link(rel="stylesheet", href="/public/css/framywork.css")
+        
+        // Mis estilos
+        link(rel="stylesheet", href="/public/css/styles.css")
         block styles
+            margenes negativos...
     body
         header.main
-            .container
-                nav(class="flex justify-between align-center nav-links")
-                    ul
-                        li
-                            a(href="/" class="nav-link") Inicio
-                        li
-                            a(href="/#features" class="nav-link") Herramienta
-                        li
-                            a(href="/#subscription" class="nav-link") Suscríbete
-                    ul
-                        li
-                            a(href="/join/login" class="btn btn-teal") Entrar
+            nav.navbar.navbar-default
+                .container.container-flex
+                        .navbar-mobile-icon.flex-expand-w.align-left
+                            .mobile-nav-icon#mobile-nav
+                                span.bar
+                                span.bar
+                                span.bar
+                        .navbar-toggle.flex-expand-w.align-left
+                            ul.navbar-menu.stretch
+                                li
+                                    a(href="/" ) Inicio
+                                li
+                                    a(href="/#features") Herramientas
+                                li
+                                    a(href="/#subscription") Suscríbete
+                        .navbar-logo.logo
+                            a(href="/") Clasdy
+                        .flex-expand-w.align-right
+                            ul.navbar-menu
+                                li
+                                    a(href="/join/login" class="btn btn-outline-teal refuse-navbar-link") Entrar
         section.content
             block content
         footer
-            .container.center-xy © Copyright  2017
+            .container © Copyright  2017
         
         script(
 			  src="https://code.jquery.com/jquery-2.2.4.min.js"
 			  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
 			  crossorigin="anonymous"
               )
+        script.
+            $('#mobile-nav').on('click', function(){
+                $('.navbar').toggleClass('is-open');
+            });
         block scripts
         

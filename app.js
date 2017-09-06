@@ -109,7 +109,7 @@ app.get('/', (req,res)=>{
 });
 
 app.get('/chat', (req, res)=>{
-  if(req.isAuthenticated())
+  // if(req.isAuthenticated())
     res.render('chat');
   //res.render('index');
 });

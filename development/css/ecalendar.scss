@@ -1,0 +1,101 @@
+
+/* BEGIN CALENDAR */
+table#calendar {
+    text-align: center;
+    empty-cells: hide;
+    margin-top: 10px;
+    width: 100%;
+    th {
+        font-weight: 200;
+        font-size: 13px;
+        padding-bottom: 10px;
+        width: 40px;
+    }
+    td {
+        padding: 2px 0;
+    }
+    tr {
+        td:first-of-type {
+            .day-resume {
+                transform: none;
+                left: 0;
+                &:before {
+                    left: 25%;
+                }
+            }
+        }
+        td:last-of-type {
+            .day-resume {
+                transform: none;
+                left: auto;
+                right: 0;
+                &:before {
+                    left: 75%;
+                }
+            }
+        }
+    }
+}
+.day-calendar {
+    width: 40px;
+    height: 40px;
+    margin: 0 auto;
+    border: 1px solid #9B9B9B;
+    position: relative;
+    cursor: pointer;
+    .day-number {
+        margin-top: 7px;
+    }
+    .day-resume {
+        width: 80px;
+        padding: 7px;
+        font-size: 13px;
+        position: absolute;
+        background-color: #222;
+        top: 100%;
+        left: 50%;
+        z-index: 10;
+        transform: translateX(-50%);
+        color: #fff;
+        cursor: pointer;
+        visibility: hidden;
+        transition: visibility ease-in-out;
+        pointer-events: none;
+        &:before {
+            content: '';
+            border-bottom: 5px solid #222;
+            border-top: 5px solid transparent;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+    &:hover {
+        .day-resume {
+            visibility: visible;
+        }
+    }
+}
+.day-events-calendars {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 4px 0;
+}
+.type-calendar {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin: 0 2px;
+}
+.type-calendar.personal {
+    background-color: yellow;
+}
+.type-calendar.school {
+    background-color: teal;
+}
+
+/* END CALENDAR */

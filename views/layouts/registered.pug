@@ -2,37 +2,89 @@ doctype
 html(lang='en')
     head
         meta(charset='utf-8')
+        meta(name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1")
         title My Home
         link(href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous")
         
         link(href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet")
+        link(rel="stylesheet", href="/public/css/framywork.css")
         link(rel="stylesheet" href="/public/css/styles.css")
-        link(rel="stylesheet" href="/public/css/home.css")
+        block style
     body
         header.main
-            .container
-                nav(class="flex justify-between align-center nav-links")
-                    ul
-                        li
-                            a(href="/" class="nav-link") Inicio
-                        li
-                            a(href="#" class="nav-link") Asignaturas
-                        li
-                            a(href="#" class="nav-link") Calendario
-                        li
-                            a(href="/chat" class="nav-link") Chat
-                    ul
-                        li
-                            a(href="#")
-                                i(class="fa fa-user-circle-o" aria-hidden="true" style="font-size: 30px")
-                        li
-                            a(href="/logout" class="nav-link") Cerrar sesión
+            nav.navbar.navbar-default
+                .container.container-flex
+                        .navbar-mobile-icon.flex-expand-w.align-left
+                            .mobile-nav-icon#mobile-nav
+                                span.bar
+                                span.bar
+                                span.bar
+                        .navbar-toggle.flex-expand-w.align-left
+                            ul.navbar-menu.stretch
+                                li
+                                    a(href="/" ) Inicio
+                                li
+                                    a(href="/#features") Asignaturas
+                                li
+                                    a(href="/#subscription") Calendario
+                        .navbar-logo.logo
+                            a(href="/") Clasdy
+                        .flex-expand-w.align-right
+                            ul.navbar-menu
+                                li.pos-relative
+                                    button(class="event-form-toggle not-navbar-link")
+                                        i(class="fa fa-plus" aria-hidden="true" style="font-size: 25px")
+                                    .popover.popover-create-event#create-event-popover
+                                        .close-event-popover.event-form-toggle
+                                            button
+                                                i(class="fa fa-times" aria-hidden="true")
+                                        .create-event
+                                            form.form.form-small.create-event-form#create-event-form(method="POST" action="/events")
+                                                .form-group
+                                                    .input-field
+                                                        label Nombre del evento
+                                                        input(type="text" placeholder="Nombre del evento" name="nameEvent")
+                                                .form-group
+                                                    .input-group.inputs-date-time
+                                                        .inputs-date
+                                                            .input-field
+                                                                label Dia
+                                                                input(type="number" placeholder="10" name="day")
+                                                            .input-field
+                                                                label Mes
+                                                                input(type="number" placeholder="11" name="month")
+                                                            .input-field
+                                                                label Año
+                                                                input(type="number" placeholder="2017" name="year")
+                                                        .inputs-time
+                                                            .input-field
+                                                                label Hora
+                                                                input(type="number" placeholder="9" name="hour")
+                                                            .points
+                                                            .input-field
+                                                                label Min
+                                                                input(type="number" placeholder="30" name="minutes")
+                                                .form-group
+                                                    .input-field
+                                                        label Observaciones
+                                                        input(type="text" placeholder="Observaciones" name="observations")
+                                                .submit
+                                                    input(type="submit" class="btn btn-outline-teal" value="Crear evento")
+                                li
+                                    button.not-navbar-link
+                                        i(class="fa fa-user-circle-o" aria-hidden="true" style="font-size: 25px")
         section.content
             block content
+        footer
+            .container © Copyright  2017
     script(
           src="https://code.jquery.com/jquery-2.2.4.min.js"
           integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
           crossorigin="anonymous"
           )
+    script.
+        $('#mobile-nav').on('click', function(){
+            $('.navbar').toggleClass('is-open');
+        });
     block scripts
         

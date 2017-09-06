@@ -1,301 +1,249 @@
-header.main {
-    background-color: #444;
+.content {
+    background-color: #333;
 }
-/* BEGIN SIDEBAR */
 .sidebar {
-    margin-top: 20px;
-    width: 300px;
-    border: 1px solid rgb(232, 235, 237);
-    display: inline-block;
-    float: left; // borrar
-    .sidebar-title {
-        font-size: 14px;
-        font-weight: 600;
-        text-align: center;
-        text-transform: uppercase;
-        color: #444;
+    color: #fff;
+    padding: 10px 0;
+    hr {
+        border-bottom-color: #3f3f3f;
     }
-    .sidebar-elem {
-        margin-top: 10px;
-    }
-    .imp-events {
-        .imp-event{
-            background: rgb(237, 241, 245);
-            border-bottom: 1px solid #fff;
-            font-size: 15px;
-        }
-        .imp-event:last-child{
-            border-bottom: 1px solid transparent;
-        }
-        table {
-            border-collapse: collapse;
-            text-align: left;
-            width: 100%;
-            th{
-                font-size: 14px;
-                font-weight: 500;
-                padding: 10px;
-            }
-            td {
-                height: 50px;
-                padding: 0 5px;
-            }
-        }
-    }
-
-    /* BEGIN REMINDES */
-    .reminders {
-        ul {
-            list-style-type: none;
-            margin-top: 10px;
-        }
-        .reminder {
-            display: flex;
-            height: 50px;
-            border-bottom: 1px solid #fff;
-            align-items: center;
-            background: rgb(237, 241, 245);
-            font-size: 15px;
-            .checkbox {
-                margin-right: 20px;
-                background-color: teal;
-                border-radius: 5px;
-                height: 30px;
-                width: 30px;
-                flex: none;
-            }
-            .riminder-title{
-                width: 100%;
-                padding-left: 5px;
-            }
-        }
-    }
-    /* END REMINDES */
 }
-/* END SIDEBAR */
-.content {overflow: hidden
+.mean {
+    margin: 20px 0;
 }
-/* PUNTOS-DIAS DE CALENDARIO*/
-.cal-month{
-
-    &.new{
-        width: 20px;
-        position: relative;
-        background-color: inherit;
-        .month-name {
-            margin-left: 100%;
-        }
-    }
-    &.current{
-        width: 0px;
-        .month-name {
-            bottom: 60px;
-        }
-
-    }
-    .month-name {
-    	letter-spacing: .3px;
-    	text-transform: uppercase;
-    	font-size: 13px;
-    	position: relative;
-    	bottom: 40px;
-    	color: #444;
-    	font-weight: 400;
-    }
-
-}
-.cal-line-points{
-	margin: 100px auto;
-	position: relative;
-    max-width: 500px;
-    .cal-line{
-        width: 100%;
-        height: 2px;
-        background-color: #DADADA;
-        position: absolute;
-        top: 0; bottom: 0;
-        margin: auto 0;
-    }
-    .cal-points {
-    	background-color: #fff;
-    	display: flex;
-        .cal-day:first-child{
-            margin-left: 0px;
-        }
-    }
-	.cal-day {
-		position: relative;
-		transition: all ease-in-out .3s;
-		margin: 0 4%;
-		z-index: 20;
-		.day {
-			position: absolute;
-			margin-top: 8px;
-			display: inline-block;
-			left: 50%;
-			transform: translatex(-50%);
-		}
-		&:hover, &:focus {
-			transform: scale(2.2);
-			.cal-point {
-				box-shadow: 0 0 5px #444;
-				transform: rotate(45deg);
-				border-radius: 50% 50%  0 50%;
-				&:before {
-					border-radius: 50% 50%  0 50%;
-					opacity: 1;
-				}
-			}
-		}
-	}
-	.cal-point {
-		width: 20px;
-		height: 20px;
-		background-color: gray;
-		border-radius: 50%;
-		transition: all ease-in-out .4s;
-		transform: rotate(45deg);
-		&.important {
-			background-color: red;
-		}
-        &.not-important {
-            background-color: #428bca;
-        }
-		&:before {
-			position: absolute;
-			content: '';
-			width: 40%;
-			height: 40%;
-			background-color: #fff;
-			border-radius: 50% ;
-			margin: auto;
-			transition: all ease-in-out .5s;
-			top: 0; left: 0; right: 0; bottom: 0;
-		}
-
-	}
-
-}
-
-/*BEGIN EVENTOS DEL DIA*/
-.day-events {
-    width: 450px;
-    border: 1px solid rgb(232, 235, 237);
-    border-radius: 0 0 10px 10px;
-    box-sizing: border-box;
-    position: relative;
-    .form-event {
-        display: none;
-        position: absolute;
-        border-radius: 5px;
-        background: teal;
-        color: #fff;
-        right: 10px;
-        z-index: 20;
-        top: 50px;
-        padding: 20px 20px;
-        &.open {
-            display: block;
-        }
-        &::before {
-            content: '';
-            position: absolute;
-            border-bottom: 5px solid teal;
-            border-left: 10px solid transparent;
-            border-right: 10px solid transparent;
-            bottom: 100%;
-            right: 10px;
-        }
-        .close {
-            position: absolute;
-            right: 15px;
-            font-size: 20px;
-            top: 10px;
-            cursor: pointer;
-        }
+header.with-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .title {
+        flex: 1;
     }
     .actions {
-        flex: none;
-        flex-basis: 60px;
-        display: flex;
-        align-items: center;
-        height: 100%;
-        justify-content: center;
-        .action {
-            border: 0px;
-            font-size: 18px;
-            margin: 0 5px;
-            cursor: pointer;
-            background: none;
-            &.create {
-                position: relative;
+        padding-left: 10px;
+        button {
+            padding: 0 5px;
+        }
+    }
+}
+
+
+.title{
+    font-size: 20px;
+    font-weight: 300;
+    .highlight {
+        font-weight: 400;
+        color: #9D1717;
+        font-size: 1.2em;
+        vertical-align: baseline;
+    }
+}
+.container-custom {
+    min-width: 300px;
+    width: 100%;
+    max-width: 350px;
+}
+
+/* BEGIN CALENDAR */
+.calendar {
+    padding: 10px 0;
+}
+/* END CALENDAR */
+
+/* BEGIN FORM CREATE EVENTS */
+.create-event {
+    text-align: left;
+    width: 300px;
+
+    overflow-y: hidden;
+    transition: all ease .3s;
+}
+.create-event-form {
+    padding: 10px;
+}
+.form {
+    .input-group.inputs-date-time{
+        input {
+            width: 40px;
+        }
+        .input-field {
+            flex: none;
+            padding: 0 2px;
+            text-align: center;
+            &:first-of-type {
+                padding-left: 0px;
+            }
+            &:last-of-type {
+                padding-right: 0px;
             }
         }
-    }
-    .day {
-        display: flex;
-        height: 50px;
-        align-items: center;
-        .date-day{
-            width: 100%;
-            margin-left: 20px;
-            font-size: 18px;
-        }
-    }
-    .events {
-
-        box-sizing: border-box;
-        width: 100%;
-        height: 300px;
-        .event:first-child{
-            margin-top: 0px;
-        }
-        .event{
-            background-color: rgb(237, 241, 245);
-            margin-top: 2px;
-            height: 50px;
-            width: 100%;
+        .inputs-date, .inputs-time {
             display: flex;
-            align-items: center;
-            &.imp {
-                border-left: 4px solid red;
-            }
-            &.medium-imp {
-                border-left: 4px solid yellow;
-            }
-
-            &.not-imp {
-                border-left: 4px solid green;
-            }
-            .event-name {
-                margin-left: 10px;
-                width: 100%;
-            }
-            .event-time {
-                height: 100%;
-                border-right: 1px solid #DADADA;
-                font-size: 14px;
-                flex: none;
-                width: 60px;
+        }
+        .inputs-time {
+            justify-content: flex-end;
+            align-items: flex-end;
+            .points {
+                height: 30px;
+                width: 10px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-            }
-            .event-actions {
-                opacity: 0;
-                transition: all ease-in-out .3s;
-                .actions {
-                    color: #555;
+                flex-direction: column;
+                &:before, &:after {
+                    content: '';
+                    position: relative;
+                    border: 2px solid;
+                    border-color: inherit;
+                    border-radius: 50%;
+                    flex: none;
                 }
+                &:before {
+                    bottom:4px;
+                }
+                &:after {
+                    top: 4px;
+                }
+            }
 
+        }
+    }
+}
+/* END FORM CREATE EVENTS */
+/* BEGIN IMPORTANT EVENTS */
+.important-events {
+    padding: 10px 0;
+    height: 200px;
+}
+table#important-events {
+    width: 100%;
+    margin-top: 10px;
+    width: 100%;
+    text-align: left;
+    table-layout: fixed;
+    th {
+        font-weight: 200;
+        font-size: 13px;
+        &.name {
+            width: 80%;
+        }
+        &.remaining {
+            width: 20%;
+            text-align: center;
+        }
+    }
+    td {
+        font-size: 16px;
+        overflow-x: hidden;
+    }
+    .event-name {
+        width: 100%;
+        padding: 3px 0;
+        overflow-x: hidden;
+        white-space: nowrap;
+    }
+    .remaining-days {
+        text-align: center;
+    }
+
+}
+/* END IMPORTANT EVENTS */
+
+/* BEGIN DAY EVENTS */
+.day-calendar-events {
+    padding: 15px;
+    padding-top: 10px;
+    background-color: #fff;
+    max-width: 500px;
+    margin: 0 auto;
+    flex: 1;
+    .date {
+        font-size: 20px
+    }
+    hr {
+        margin: 10px -15px;
+        border-bottom-color: #dadada;
+    }
+}
+.day-events {
+    .event {
+        display: flex;
+        border-left: 2px solid transparent;
+        padding-left: 5px;
+        margin-top: 5px;
+
+        &.important {
+            border-color: red;
+        }
+        .event-info {
+            flex: 1;
+        }
+        .event-time {
+            font-size: 14px;
+            margin-right: 10px;
+        }
+        .event-observations {
+            font-size: 14px;
+            color: #444;
+        }
+        .event-actions {
+            display: flex;
+            align-items: center;
+            button {
+                margin: 0 5px;
             }
-            &:hover {
-                .event-actions {
-                    opacity: 1;
-                }
-            }
+        }
+
+    }
+
+}
+
+/* END DAY EVENTS */
+/* BEGIN POPOVER */
+.pos-relative {
+    position: relative;
+}
+.popover {
+    position: absolute;
+    top: 100%;
+    border: 1px solid #dadada;
+    border-radius: 5px;
+    &:before, &:after {
+        content: '';
+        position: absolute;
+        border-width: 10px;
+        border-style: solid;
+        border-color: transparent;
+        margin-top: -20px;
+        right: 40px;
+        top: 0;
+        pointer-events: none;
+    }
+    &:after {
+        border-bottom-color: #fff;
+        margin-top: -19px;
+    }
+    &:before {
+        border-bottom-color: inherit;
+    }
+}
+.popover-create-event {
+    background-color: #fff;
+    right: 50%;
+    margin-right: -50px;
+    display: none;
+    &.is-open {
+        display: block;
+    }
+    .close-event-popover {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin-right: 10px;
+        margin-top: 5px;
+        button {
+            padding: 5px;
         }
     }
 }
 
-/*END EVENTOS DEL DIA*/
+/* END POPOVER */

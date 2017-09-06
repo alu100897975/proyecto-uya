@@ -1,33 +1,38 @@
 extends layouts/unregistered.pug
 
 block styles
-    link(rel="stylesheet" href="/public/css/access.css")
+    link(rel="stylesheet" href="/public/css/signin.css")
 
 block content
     .container
-        .access-section.center-block
-            .access-title
-                h1 Registrate
-            .access-alt ¿Ya tienes una cuenta?
-                    a(href="/join/login" class="underline") Inicia sesión
-            
-            form(action="/join/signup" method="POST" class="access-form")
-                .server-msg
-                .input-field
-                    label(for="name") Nombre
-                    input(type="text" placeholder="Introduce tu nombre" class="input input-text" name="name" minlenght="6" maxlength="64" id="name" required="true")
-                    .valid-suggestion
-                .input-field
-                    label(for="email") Email
-                    input(type="email" placeholder="Introduce tu correo electrónico" class="input input-text" minlenght="6" name="email" id="email" maxlength="64" required="true")
-                    .valid-suggestion
-                .input-field
-                    label(for="password") Contraseña
-                    input(type="password" placeholder="Introduce tu contraseña" minlength="6" class="input input-text" maxlength="64" name="password" id="password" required="true")
-                    .valid-suggestion
-                .submit
-                    input(type="submit" class="btn btn-c-teal" value="Registrarse")
-            include partials/auth-apps.pug
+        .row.center-sm
+            .col-xs-12.col-sm-8.col-md-6
+                .access-section
+                    .access-title
+                        h1 Regístrate
+                    .access-alt ¿Ya tienes una cuenta?
+                            a(href="/join/login" class="underline") Inicia sesión
+                    
+                    form(action="/join/signup" method="POST" class="form")
+                        .server-msg
+                        .form-group
+                            .input-field
+                                label(for="name") Nombre
+                                input(type="text" placeholder="Introduce tu nombre" name="name" minlenght="6" maxlength="64" id="name" required="true")
+                            .valid-suggestion
+                        .form-group
+                            .input-field
+                                label(for="email") Email
+                                input(type="email" placeholder="Introduce tu correo electrónico" minlenght="6" name="email" id="email" maxlength="64" required="true")
+                            .valid-suggestion
+                        .form-group
+                            .input-field
+                                label(for="password") Contraseña
+                                input(type="password" placeholder="Introduce tu contraseña" minlength="6" maxlength="64" name="password" id="password" required="true")
+                            .valid-suggestion
+                        .submit
+                            input(type="submit" class="btn btn-outline-teal" value="Registrarse")
+                    include partials/auth-apps.pug
 block scripts
     script(src="/public/js/validate.js")
     script(src="/public/js/access.js")

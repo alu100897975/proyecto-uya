@@ -1,0 +1,57 @@
+@mixin grid($size) {
+    .start-#{$size} {
+        justify-content: flex-start;
+    }
+    .center-#{$size} {
+        justify-content: center;
+    }
+    .end-#{$size} {
+        justify-content: flex-end;
+    }
+    .around-#{$size} {
+        justify-content: space-around;
+    }
+    .between-#{$size} {
+        justify-content: space-between;
+    }
+
+    .top-#{$size} {
+        align-items: flex-start;
+    }
+    .middle-#{$size} {
+        align-items: center;
+    }
+    .bottom-#{$size} {
+        align-items: flex-end;
+    }
+
+    $total_width: 100;
+    $cols: 12;
+    $col-width: $total_width / $cols;
+    $limit: $cols - 1 ;
+
+    @for $i from 1 through $limit {
+        $w: $col-width * $i * 1%;
+        .col-#{$size}-#{$i} {
+            flex-basis: $w;
+            max-width: $w;
+        }
+        .col-#{$size}-offset-#{$i}{
+            margin-left: $w;
+        }
+    }
+    .col-#{$size}-#{$cols} {
+        flex-basis: $total_width * 1%;
+        max-width: $total_width * 1%;
+    }
+}
+@include grid('xs');
+@media only screen and (min-width: 48em) {
+    @include grid('sm');
+}
+@media only screen and (min-width: 64em){
+    @include grid('md');
+}
+@media only screen and (min-width: 75em) {
+    @include grid('lg');
+}

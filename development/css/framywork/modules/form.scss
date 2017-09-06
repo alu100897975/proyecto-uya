@@ -1,0 +1,91 @@
+$error-color: #d23827;
+.form {
+	text-align: left;
+	/* tipos de formularios */
+	&.form-small {
+		font-size: 15px;
+		.form-group {
+			margin-top: 5px;
+			input {
+				height: 30px;
+			}
+		}
+
+	}
+	.server-msg {
+		max-height: 0;
+		color: #fff;
+		transition: all ease-in-out .3s;
+		overflow-y: hidden;
+		border-radius: 5px;
+		background-color: $error-color;
+		text-align: center;
+		&.error {
+			max-height: 25px;
+		}
+	}
+	.form-group {
+		margin-top: 10px;
+		input {
+			height: 35px;
+		}
+		.validation-msg {
+			color: $error-color;
+			font-size: 14px;
+			max-height: 0;
+			overflow-x: hidden;
+			text-align: center;
+			transition: all ease-in-out .3s;
+		}
+		&.error {
+			input {
+				border-color: $error-color;
+			}
+			.validation-msg {
+				max-height: 20px;
+			}
+		}
+	}
+	.input-field, .field-inline, .input-group{
+		display: flex;
+		flex-grow: 	1;
+	}
+	.input-field {
+		flex-direction: column;
+		label {
+			margin-bottom: 3px;
+		}
+		& > input[type="text"],
+		& > input[type="email"],
+		& > input[type="password"],
+		& > input[type="number"],
+		& > textarea {
+			width: 100%;
+		}
+	}
+	.field-inline, input-group {
+		align-items: center;
+	}
+	.field-inline label {
+		margin-right: 10px;
+	}
+	.field-inline > input{flex-grow: 1; width: 0px;}
+	.input-group  > * {
+		flex-grow: 1;
+		width: 0px;
+		margin-left: 3px;
+		&:first-child {
+			margin-left: 0px;
+		}
+	}
+	.forgot-password {
+        margin-top: 5px;
+        color: teal;
+        font-size: 14px;
+        text-align: right;
+    }
+	.submit {
+		text-align: center;
+		margin-top: 20px;
+	}
+}

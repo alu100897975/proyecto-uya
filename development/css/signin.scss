@@ -1,0 +1,150 @@
+$facebook: #385591;
+$google: #CC4634;
+
+/* BEGIN CONTENT */
+.access-section {
+    text-align: center;
+    margin-top: 20px;
+    .access-title h1 {
+        font-size: 32px;
+        font-weight: 300;
+    }
+    .access-alt {
+        margin-top: 5px;
+        font-size: 17px;
+        a {
+            padding-left: 5px;
+            color: teal;
+        }
+    }
+}
+    /* begin sign in form */
+
+    /* end sign in form */
+.btn-c-teal {
+    border-color: teal;
+    color: teal;
+    &:hover, &:focus {
+        color: #fff;
+        background-color: teal;
+    }
+}
+
+// BEGIN ACCESS AUTH
+.access-auth {
+    margin-top: 20px;
+    .auth-apps {
+        margin: 20px 0;
+        display: flex;
+        justify-content: center;
+        .auth-app {
+            margin-left: 10px;
+            margin-right: 10px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            position: relative;
+            cursor: pointer;
+            transition: all ease-in-out;
+
+            &:first-child {
+                margin-left: 0;
+            }
+            &:last-child {
+                margin-right: 0;
+            }
+            &:hover, &:focus {
+                box-shadow: 0 0 10px #444;
+            }
+            &.facebook-app{
+                background-color: $facebook;
+            }
+            &.google-app{
+                background-color: $google;
+            }
+            .app-icon{
+                width: 40px;
+                height: 40px;
+                line-height: 40px;
+                text-align: center;
+                flex: none;
+                border-right: 1px solid;
+                border-color: rgba(#fff, .3);
+            }
+            .app-name {
+                padding: 0 20px;
+            }
+        }
+    }
+}
+/* sticky
+<div class="calendario">
+  <div class="dias">L M M J V S D</div>
+  <div class="meses">
+
+    <div class="mes">
+      Enerosssss
+    </div>
+    <div class="anyo">2017</div>
+    <br><br><br><br><br><br><br><br><br><br<br><br><br><br><br><br><br><br><br><br><br<br><br><br>
+    <div class="mes">
+      Febrero de 2017
+    </div>
+    <br><br><br><br><br><br><br><br><br><br<br><br><br><br><br><br><br><br><br><br><br<br><br><br>
+  </div>
+</div>
+
+
+
+
+.calendario {
+ margin: 100px;
+ height: 200px;
+ position: relative;
+}
+.meses {
+ border: 1px solid red;
+ height: 100%;
+ width: 100%;
+ overflow-y: auto;
+ position: relative;
+ box-sizing: border-box;
+}
+.mes {
+display: inline-block;
+ height: 40px;
+ background-color: teal;
+ border-color: yellow;
+ position: sticky;
+ position: -webkit-sticky;
+ float: left;
+ top: 0px;
+}
+.anyo {
+ width: 40px;
+ height: 40px;
+ background-color: red;
+ border-color: yellow;
+ position: sticky;
+ position: -webkit-sticky;
+ top: 0;
+ float: left
+}
+.dias {
+ position: absolute;
+ top: 40px;
+ width: 100%;
+ height: 40px;
+ background-color: teal;
+ border-color: yellow;
+ z-index: 10;
+}
+body {
+ margin: 0px;
+ padding: 0px;
+}
+
+
+
+
+*/

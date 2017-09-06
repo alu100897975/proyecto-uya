@@ -1,37 +1,48 @@
 extends layouts/unregistered.pug
+block styles
+    link(rel="stylesheet" href="/public/css/landing.css")
 
 block content
-    section.description
-        .container
-            section.text
-                h1 Diario de Clase
-                p Los alumnos y profesores puedan reportar eventos ocurridos durante la jornada académica, a modo de “noticias”.
-            .margin-top
-                a(href="/join/signup" class="btn btn-teal") Regístrate
+    section.pitch.container-flex.middle
+            .container
+                .description
+                        .row.center-sm
+                            .col-xs-12.col-sm-6
+                                h1 Clasdy
+                                p Una aplicación para que los alumnos y profesores puedan reportar eventos ocurridos durante la jornada académica, a modo de noticias.
+                .sign-in
+                    a(href="/join/signup" class="btn hover-teal") Regístrate
+
     section.features#features
         .container
             .feature
-                .row
-                    .column.m6
+                .row.center-md.middle-sm
+                    .col-xs-12.col-sm-6.col-md-5
                         .feature-description
                             h2 Calendario
                             p Dispón de un calendario que reúna todos tus eventos académicos.
-                    .column.m6
-                        img(src="" alt="")
+                    .col-xs-12.col-sm-6.col-md-5
+                        img(src="/public/img/calendar.png" alt="")
+            hr
             .feature
-                .row
-                    .column.m6
-                        img(src="" alt="")
-                    .column.m6
-                        .feature-description.right
+                .row.center-md.middle-sm.reverse
+                    .col-xs-12.col-sm-6.col-md-5
+                        .feature-description
                             h2 Chat
                             p Mantente informado sobre cualquier información de tu asignatura.
+                    .col-xs-12.col-sm-6.col-md-5
+                        img(src="/public/img/chat.png" alt="")
+                    
+    
     section.subscription#subscription
         .container
-            h3 ¿Quieres recibir información sobre futuras actualizaciones?
-            form(action="#" method="" class="center-block")
-                .input-field
-                    label(for="email") Email
-                    input(type="email" class="input input-text transparent" placeholder="Introduce tu email" name="email" id="email" required)
-                .submit
-                    input(type="submit" class="btn btn-red" value="Suscribirse")
+            .row.center-sm
+                .col-xs-12.col-sm-6
+                    h4 ¿Quieres recibir información sobre futuras actualizaciones?
+                    form(action="#" method="" class="form")
+                        .form-group
+                            .input-field
+                                label(for="email") Email
+                                input(type="email" placeholder="Introduce tu email" name="email" id="email" required)
+                        .submit
+                            input(type="submit" class="btn hover-red" value="Suscribirse")

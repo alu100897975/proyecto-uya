@@ -1,99 +1,154 @@
 extends layouts/registered.pug
-
+block style
+    link(rel="stylesheet" href="/public/css/home.css")
+    link(rel="stylesheet" href="/public/css/ecalendar.css")
+        
 block content
-    .section#my-home
-        .container
-            //.row
-                .col.s12.m8.offset-m2.l6.xl4
-            section.sidebar
-                .imp-events.sidebar-elem
-                    h1.sidebar-title EVENTOS IMPORTANTES
-                    table
-                        thead
-                            tr
-                                th Nombre del evento
-                                th Faltan
-                        tbody
-                            for event in events
-                                tr.imp-event
-                                    td
-                                        a(href="#")= event.name
-                                    
-                                    td= event.date.remaining
-                                        |  días
-                //.reminders.sidebar-elem
-                    .sidebar-title
-                        h1.sidebar-title RECORDATORIOS
-                    ul
-                        li.reminder
-                            .riminder-title Sistemas informaticos
-                            .checkbox
-            //.col.s12.m8.offset-m2.l6.xl8
-            .caldendar(style="float: right;")
-                .cal-line-points
-                    .cal-line
-                    .cal-points
-                        for month in months
-                            .cal-month.current
-                                .month-name= month.name
-                            each day in month.days
-                                .cal-day(data-year= month.year data-month= month.date data-day= day.date)
-                                    .cal-point
-                                    .day= day.date
-                                    
-                .day-events.center-block#day-events
-                    header.day
-                        span.date-day#date 4 de agosto
+    .container-fluid
+        .row
+            .col-xs-12.col-sm-5
+                .container.container-custom
+                    .sidebar
+                        .important-events
+                            header
+                                .title
+                                    | Próximos&nbsp
+                                    span.highlight eventos
+                            table#important-events
+                                thead
+                                    tr
+                                        th.name Nombre
+                                        th.remaining Faltan
+                                tbody
+                                    tr
+                                        td
+                                            .event-name Examen LPPaaaassssssssssssssssssssssssssssssssssssssssssssaaaaaaaa
+                                        td
+                                            .remaining-days 8 días
+                                    tr
+                                        td
+                                            .event-name Examen LPP
+                                        td
+                                            .remaining-days 8 días
+                        hr
+                        .calendar
+                            header.with-actions
+                                .title.month-year-calendar#month
+                                .actions
+                                    button(class="event-form-toggle")
+                                        i(class="fa fa-plus" aria-hidden="true")
+                                    button(onclick="calendar.refreshMonth(-1)")
+                                        i(class="fa fa-chevron-left" aria-hidden="true")
+                                    button(onclick="calendar.refreshMonth(1)")
+                                        i(class="fa fa-chevron-right" aria-hidden="true")
+                            
+                            #ecalendar
+                        
+            .col-xs-12.col-sm-7.mean.container.container-flex
+                .day-calendar-events
+                    header.with-actions
+                        .title.date
+                            span.highlight Miércoles
+                            | &nbsp1 de mayo de 2017
                         .actions
-                            button.action#open-form-event
-                                    i(class="fa fa-plus" aria-hidden="true")
-                    .events#events
-                        .event.imp
-                            .event-time 24:00
-                            .event-name Sistemas informaticos
-                        .event.medium-imp
-                            .event-time 4:00
-                            .event-name Sistemas informaticos
-                            .event-actions.actions
-                                button.action.edit
-                                    i(class="fa fa-pencil" aria-hidden="true")
-                                button.action.remove
-                                    i(class="fa fa-trash" aria-hidden="true")
-                    .form-event
-                            .close#close-form-event
-                                i(class="fa fa-times" aria-hidden="true")
-
-                            form(action="/event" method="POST" class="form-small" name="newEvent")
-
-                                .input-field
-                                    label(for="name") Evento
-                                    input(type="text" id="name" name="name" class="input input-text" placeholder="Nombre del evento" required)
-                                    
-                                .input-group
-                                    .input-field
-                                        label(for="day") Dia
-                                        input(type="number" id="day" name="day" class="input input-number" min="0" max="31" placeholder="7" required)
-                                    .input-field
-                                        label(for="month") Mes
-                                        input(type="number" id="month" name="month" class="input input-number" min="0" max="12" placeholder="7" required)
-                                    .input-field
-                                        label(for="year") Año
-                                        input(type="number" id="year" name="year" class="input input-number" value="2017" min="2017" max="2018" placeholder="2017" required)
-                                .input-group
-                                    .input-field
-                                        label(for="hour") Hora
-                                        input(type="number" id="hour" name="hour" class="input input-number" min="0" max="24" placeholder="7" required)
-                                    .input-field
-                                        label(for="minutes") Minutos
-                                        input(type="number" id="minutes" name="minutes" class="input input-number" min="0" max="60" placeholder="35" required)
-                                    .input-field
-                                        label(for="level") ¿Importante?
-                                        input(type="checkbox" name="level" class="input center-block")
-                                .submit.center
-                                    input(type="submit" class="btn btn-red btn-small" value="Crear")
+                            button(class="event-form-toggle")
+                                i(class="fa fa-plus" aria-hidden="true")
+                            button
+                                i(class="fa fa-chevron-left" aria-hidden="true")
+                            button
+                                i(class="fa fa-chevron-right" aria-hidden="true")
+                    hr
+                    .day-events
+                        ul.events
+                            li.event.important
+                                .event-info
+                                    .event-name Examen de LPP
+                                    .aditional-info
+                                        span.event-time 10:00 - 11:00
+                                        span.event-observations Observaciones...
+                                .event-actions
+                                    button
+                                        i(class="fa fa-pencil" aria-hidden="true")
+                                    button
+                                        i(class="fa fa-trash-o" aria-hidden="true")
+                            li.event.important
+                                .event-info
+                                    .event-name Examen de LPP
+                                    .aditional-info
+                                        span.event-time 10:00 - 11:00
+                                        span.event-observations Observaciones...
+                                .event-actions
+                                    button
+                                        i(class="fa fa-pencil" aria-hidden="true")
+                                    button
+                                        i(class="fa fa-trash-o" aria-hidden="true")
+                            li.event.important
+                                .event-info
+                                    .event-name Examen de LPP
+                                    .aditional-info
+                                        span.event-time 10:00 - 11:00
+                                        span.event-observations Observaciones...
+                                .event-actions
+                                    button
+                                        i(class="fa fa-pencil" aria-hidden="true")
+                                    button
+                                        i(class="fa fa-trash-o" aria-hidden="true")
+                            li.event.important
+                                .event-info
+                                    .event-name Examen de LPP
+                                    .aditional-info
+                                        span.event-time 10:00 - 11:00
+                                        span.event-observations Observaciones...
+                                .event-actions
+                                    button
+                                        i(class="fa fa-pencil" aria-hidden="true")
+                                    button
+                                        i(class="fa fa-trash-o" aria-hidden="true")
+                            li.event.important
+                                .event-info
+                                    .event-name Examen de LPP
+                                    .aditional-info
+                                        span.event-time 10:00 - 11:00
+                                        span.event-observations Observaciones...
+                                .event-actions
+                                    button
+                                        i(class="fa fa-pencil" aria-hidden="true")
+                                    button
+                                        i(class="fa fa-trash-o" aria-hidden="true")
+                            li.event.important
+                                .event-info
+                                    .event-name Examen de LPP
+                                    .aditional-info
+                                        span.event-time 10:00 - 11:00
+                                        span.event-observations Observaciones...
+                                .event-actions
+                                    button
+                                        i(class="fa fa-pencil" aria-hidden="true")
+                                    button
+                                        i(class="fa fa-trash-o" aria-hidden="true")
+                            li.event.important
+                                .event-info
+                                    .event-name Examen de LPP
+                                    .aditional-info
+                                        span.event-time 10:00 - 11:00
+                                        span.event-observations Observaciones...
+                                .event-actions
+                                    button
+                                        i(class="fa fa-pencil" aria-hidden="true")
+                                    button
+                                        i(class="fa fa-trash-o" aria-hidden="true")
+                            li.event.important
+                                .event-info
+                                    .event-name Examen de LPP
+                                    .aditional-info
+                                        span.event-time 10:00 - 11:00
+                                        span.event-observations Observaciones...
+                                .event-actions
+                                    button
+                                        i(class="fa fa-pencil" aria-hidden="true")
+                                    button
+                                        i(class="fa fa-trash-o" aria-hidden="true")
+    
 block scripts
-    script(src="/public/js/events.js")
-    script.
-        $('#open-form-event, #close-form-event'). on('click',()=>{
-            $('.form-event').toggleClass('open');
-        });
+    script(src="/public/js/ecalendar.js")
+    script(src="/public/js/home.js")
