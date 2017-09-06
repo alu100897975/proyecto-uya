@@ -7,13 +7,15 @@ var assertions = {
 
 function renderError(input, error){
     input = $(input);
-    input.parent().addClass('field-error');
-    input.next().text(error);
+
+    input.parents('.form-group')
+            .addClass('error')
+            .children('.validation-msg').text(error);
 }
 function clearErrors() {
-    $('.field-error').removeClass('field-error');
+    $('.error').removeClass('error');
 }
-$('.access-form').on('submit', function(e){
+$('.validatable-form').on('submit', function(e){
     e.preventDefault();
     clearErrors();
     var form = $(this).context; // o $(this)[0]
@@ -39,8 +41,7 @@ $('.access-form').on('submit', function(e){
                 window.location.href="/";
             },
             error: function(res){
-
-                $('.server-msg').text(res.responseJSON.message).addClass('field-error');
+                $('.server-msg').text(res.responseJSON.message).addClass('error');
             }
         })
     }else {

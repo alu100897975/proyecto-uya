@@ -13,12 +13,12 @@ block content
                     .access-alt ¿Aún no tiene una cuenta?
                             a(href="/join/signup" class="underline") Registrate
                     
-                    form(action="/join/login" method="POST" name="login-form" class="form" id="login-form")
+                    form(action="/join/login" method="POST" name="login-form" class="form validatable-form" id="login-form")
                         .server-msg
                         .form-group
                             .input-field
                                 label(for="email") Correo electrónico
-                                input(type="email" placeholder="Introduce tu correo electrónico" name="email" minLength="6" id="email" maxlength="64" required="true")
+                                input(type="email" placeholder="Introduce tu correo electrónico" name="email" minLength="0" id="email" maxlength="64" required="true")
                             .validation-msg
                         .form-group
                             .input-field
