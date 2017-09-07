@@ -23,7 +23,7 @@ html(lang='es')
                         .navbar-toggle.flex-expand-w.align-left
                             ul.navbar-menu.stretch.animated
                                 li
-                                    a(href="/home" class= page== 'calendar'? "active": "") Calendario
+                                    a(href="/" class= page== 'calendar'? "active": "") Calendario
                                 li
                                     a(href="/chat" class= page== 'chat'? "active": "") Chat
                         .navbar-logo.logo
@@ -39,35 +39,37 @@ html(lang='es')
                                                 button(aria-label="Cancelar creacion evento")
                                                     i(class="fa fa-times" aria-hidden="true")
                                             .create-event
-                                                form.form.form-small.create-event-form#create-event-form(method="POST" action="/events")
+                                                form.form.form-small#create-event-form(method="POST" action="/events")
                                                     .form-group
                                                         .input-field
                                                             label Nombre del evento
-                                                            input(type="text" placeholder="Nombre del evento" name="nameEvent" value="nombre 7")
+                                                            input(type="text" placeholder="Nombre del evento" name="nameEvent")
+                                                        .validation-msg
                                                     .form-group
                                                         .input-group.inputs-date-time
                                                             .inputs-date
                                                                 .input-field
                                                                     label Dia
-                                                                    input(type="number" placeholder="10" name="day" value="7")
+                                                                    input(type="number" min="0" max="31" placeholder="10" name="day" required)
                                                                 .input-field
                                                                     label Mes
-                                                                    input(type="number" placeholder="11" name="month" value="9")
+                                                                    input(type="number" min="1" max="12" placeholder="11" name="month" required)
                                                                 .input-field
                                                                     label Año
-                                                                    input(type="number" placeholder="2017" name="year" value="2017")
+                                                                    input(type="number" min="2017" placeholder="2017" name="year" required)
                                                             .inputs-time
                                                                 .input-field
                                                                     label Hora
-                                                                    input(type="number" placeholder="9" name="hour" value="7")
+                                                                    input(type="number"  max="23" placeholder="09" name="hour")
                                                                 .points
                                                                 .input-field
                                                                     label Min
-                                                                    input(type="number" placeholder="30" name="minutes" value="7")
+                                                                    input(type="number" min="0" max="59" placeholder="30" name="minutes")
+                                                        .validation-msg
                                                     .form-group
                                                         .input-field
                                                             label Observaciones
-                                                            input(type="text" placeholder="Observaciones" name="observations" value="sin observaciones")
+                                                            input(type="text" placeholder="Observaciones" name="observations")
                                                     .submit
                                                         input(type="submit" class="btn btn-outline-teal" value="Crear evento")
                                 li

@@ -26,27 +26,30 @@ function clearForm(form, opt){
 };
 $('#create-event-form').on('submit', function(e){
     e.preventDefault();
-    $.ajax({
-        method: this.method,
-        url: this.action,
-        data: {
-            name: this.nameEvent.value,
-            day: this.day.value,
-            month: this.month.value,
-            year: this.year.value,
-            hour: this.hour.value,
-            minutes: this.minutes.value,
-            observations: this.observations.value
-        },
-        success: function(data){
-            $('#create-event-popover').removeClass('is-open');
-            clearForm('#create-event-form');
-            getEventsDay($('#date-calendar').data('date'));
-            loadNextEvents();
-        },
-        error: function(res){
-            console.log("Algo salio mal");
-        }
 
-    });
+    if(formIsValid(this)) {
+        $.ajax({
+            method: this.method,
+            url: this.action,
+            data: {
+                name: this.nameEvent.value,
+                day: this.day.value,
+                month: this.month.value,
+                year: this.year.value,
+                hour: this.hour.value,
+                minutes: this.minutes.value,
+                observations: this.observations.value
+            },
+            success: function(data){
+                $('#create-event-popover').removeClass('is-open');
+                clearForm('#create-event-form');
+                getEventsDay($('#date-calendar').data('date'));
+                loadNextEvents();
+            },
+            error: function(res){
+                console.log("Algo salio mal");
+            }
+
+        });
+    };
 });

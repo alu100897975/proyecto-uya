@@ -12,15 +12,8 @@ var express = require('express'),
 
     passport = require('./config/passport');
 
-
-
 mongoose.connect('localhost:27017/clasdy');
-// app.use(sass({ //Poner middleware sass antes de express.static
-//     src: __dirname + '/development',
-//     dest: __dirname + '/public',
-//     //debug: true,
-//     prefix:  '/public'
-// }));
+
 
 app.use('/public',express.static(__dirname + '/public')); //Poner arriba para evitar serializacion en cada peticion
 app.set('views', __dirname + '/views');
@@ -78,33 +71,11 @@ app.get('/logout',isAuthenticated, (req,res)=>{
         res.redirect('/');
     });
 });
-app.get('/home', (req,res)=>{
-    res.render('home');
-});
 app.get('/', (req,res)=>{
-    /*
     if(req.isAuthenticated()){
-        var Event = require('./models/event');
-        var Calendar = require('calendar-util');
-
-        var calendar = new Calendar();
-        var months = calendar.nextDays(7);
-        console.log(months);
-        Event.find({user: req.user.id, important: true}, (err, events)=>{
-            if(err){
-                res.send("no se pudieron cargar tus eventos");
-            }
-            if(events) {
-                var dateEvents = events.map(function(event){
-                  return event.date;
-                })
-                calendar.remainingDays(dateEvents);
-                res.render('home',{events: events, months: months});
-            }
-        });
-        return
+        res.render('home');
+        return;
     }
-    */
     res.render('index');
 });
 

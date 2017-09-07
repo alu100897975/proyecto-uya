@@ -23,7 +23,7 @@ class Required{
         this.toValid = toValid;
     }
     assert(){
-        return this.toValid != undefined;
+        return this.toValid != '';
     }
     get failMessage(){
         return 'Este campo es requerido';
@@ -71,3 +71,74 @@ class EmailFormat {
     }
 }
 Validation.emailFormat = EmailFormat;
+
+class Min {
+    constructor(toValid, minNumber){
+        this.min = minNumber
+        this.toValid = toValid;
+    }
+    assert(){
+        return this.toValid >= this.min;
+    }
+    get failMessage(){
+        return 'Introduzca un numero mayor que ' + this.min;
+    }
+}
+Validation.min = Min;
+
+class Max {
+    constructor(toValid, maxNumber){
+        this.max = maxNumber
+        this.toValid = toValid;
+    }
+    assert(){
+        return this.toValid <= this.max;
+    }
+    get failMessage(){
+        return 'Introduzca un numero mayor que ' + this.max;
+    }
+}
+Validation.max = Max;
+
+
+// Funciones
+
+
+var assertions = {
+    name: {required: true, minLength: 6, maxLength: 64},
+    email: {required: true, emailFormat: true, minLength: 6, maxLength: 64},
+    password: {required: true, minLength: 6, maxLength: 64},
+    nameEvent: {required: true, minLength: 4},
+    day:  {required: true, min: 1,max: 31},
+    month: {required: true, min: 1,max: 12},
+    year: {required: true, min: 2017},
+    hour: {required: true, min:0, max: 23},
+    minutes: {required: true, min: 0, max: 59},
+    observations: {}
+};
+
+function renderError(input, error){
+    input = $(input);
+    input.parents('.form-group')
+            .addClass('error')
+            .children('.validation-msg').text(error);
+}
+function clearErrors() {
+    $('.error').removeClass('error');
+}
+function formIsValid(form){
+    clearErrors();
+    var dataIsValid = true;
+
+    var inputsText = form.elements.length - 1 // -1 ya que el ultimo suele ser el submit
+    for(var i=0; i< inputsText; i++){
+        var input = form.elements[i];
+        var validation = new Validation(input.value, assertions[input.name]);
+        var failMessage = validation.failMessage;
+        if( failMessage){
+            dataIsValid = false;
+            renderError(input, failMessage);
+        }
+    }
+    return dataIsValid;
+}

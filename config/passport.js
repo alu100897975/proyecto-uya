@@ -73,7 +73,9 @@ passport.use('local-signup',
                 req.logIn(user , (err)=>{
                     if(err) return done( messageCode(500) );
                 });
-                return done( response );
+                var response = messageCode(200);
+                response.username = user.name;
+                return done( response);
             }).catch((err)=>{
                 return done( messageCode(500) );
             });

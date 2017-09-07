@@ -5,7 +5,7 @@ var DayEvent  = require('../models/event');
 router.get('/', (req,res)=>{
     var {day,month, year} = req.query;
     DayEvent
-        .find({user: '59196f0213fc3e078f55fb3c' , "date.day":day, "date.year":year, "date.month":month})
+        .find({user: req.user.id , "date.day":day, "date.year":year, "date.month":month})
         .sort({'time.hour': 1,'time.minutes': 1 })
         .exec(
             function(err,events){
@@ -19,7 +19,7 @@ router.get('/', (req,res)=>{
 });
 router.get('/next-events', (req,res) =>{
     var cd = new Date(); //current_date
-    DayEvent.find({user: '59196f0213fc3e078f55fb3c'})
+    DayEvent.find({user: req.user.id})
         .sort({"date.year": 1, "date.month": 1, "date.day": 1})
         .exec(
             function(err,events){
@@ -52,7 +52,7 @@ router.post('/', (req, res)=>{
     var dataEvent = req.body;
     var dayEvent = new DayEvent({
         name: dataEvent.name,
-        user: '59196f0213fc3e078f55fb3c',
+        user: req.user.id,
         date: {
             day: dataEvent.day,
             month: dataEvent.month,

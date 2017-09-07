@@ -12,23 +12,23 @@ block content
                         h1 Regístrate
                     .access-alt ¿Ya tienes una cuenta?
                             a(href="/join/login" class="underline") Inicia sesión
-                    form(action="/join/signup" method="POST" class="form validatable-form")
+                    form(action="/join/signup" method="POST" class="form signin-form")
                         .server-msg
                         .form-group
                             .input-field
                                 label(for="name") Nombre
-                                input(type="text" placeholder="Introduce tu nombre" name="name" minlenght="6" maxlength="64" id="name" required="true")
-                            .valid-suggestion
+                                input(type="text" placeholder="Introduce tu nombre" name="name" minlenght="6" maxlength="64" id="name")
+                            .validation-msg
                         .form-group
                             .input-field
                                 label(for="email") Email
                                 input(type="email" placeholder="Introduce tu correo electrónico" minlenght="6" name="email" id="email" maxlength="64" required="true")
-                            .valid-suggestion
+                            .validation-msg
                         .form-group
                             .input-field
                                 label(for="password") Contraseña
                                 input(type="password" placeholder="Introduce tu contraseña" minlength="6" maxlength="64" name="password" id="password" required="true")
-                            .valid-suggestion
+                            .validation-msg
                         .submit
                             input(type="submit" class="btn btn-outline-teal" value="Registrarse")
                     include partials/auth-apps.pug

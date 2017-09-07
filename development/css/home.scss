@@ -59,7 +59,7 @@ header.with-actions {
     overflow-y: hidden;
     transition: all ease .3s;
 }
-.create-event-form {
+#create-event-form {
     padding: 10px;
 }
 .form {
@@ -111,6 +111,7 @@ header.with-actions {
     }
 }
 /* END FORM CREATE EVENTS */
+
 /* BEGIN IMPORTANT EVENTS */
 .next-events {
     padding: 10px 0;
@@ -202,6 +203,8 @@ header.with-actions {
 }
 
 /* END DAY EVENTS */
+
+
 /* BEGIN POPOVER */
 .pos-relative {
     position: relative;

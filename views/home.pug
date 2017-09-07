@@ -37,7 +37,7 @@ block content
                             #ecalendar
                         
             .col-xs-12.col-sm-7.mean.container.container-flex
-                .day-calendar-events#day-calendar-events(tabindex="10" aria-labelledby="date-calendar")
+                .day-calendar-events#day-calendar-events(tabindex="0" aria-labelledby="date-calendar")
                     header.with-actions
                         .title.date#date-calendar
                         .actions
@@ -52,5 +52,6 @@ block content
                         
     
 block scripts
+    script(src="/public/js/validate.js")
     script(src="/public/js/ecalendar.js")
     script(src="/public/js/home.js")
