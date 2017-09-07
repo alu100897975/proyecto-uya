@@ -14,7 +14,7 @@ var schema = new Schema({
         hour: {type: Number},
         minutes: {type: Number},
     },
-    important: {type: Boolean, required: true}
+    observations: {type: String}
 });
 
 module.exports = mongoose.model('Event', schema);

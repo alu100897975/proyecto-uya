@@ -1,21 +1,27 @@
-$('#days .day-calendar').on('click', function(){
-    var day = this.getAttribute('data-day');
-    var month = $cal.month.data('month');
-    var year = $cal.month.data('year');
-
-    $.ajax({
-        method: 'GET',
-        url: `/events?day=${day}&month=${month}&year=${year}`,
-        success: function(){
-            alert("exito");
-        }
+$('#days').on('click','.day-calendar', function(){
+    getEventsDay({
+        dayIndex: this.getAttribute('data-index'),
+        day: this.getAttribute('data-day'),
+        monthIndex: $cal.month.data('month'),
+        year: $cal.month.data('year')
     })
 });
 
 $('.event-form-toggle').on(' click', function(){
     $('#create-event-popover').toggleClass('is-open');
 });
+function clearForm(form, opt){
 
+    var options = {inputSubmit : true};
+    Object.assign(options, opt);
+
+    var formElements = document.querySelector(form).elements;
+    var lenght = options.inputSubmit == true? formElements.length -1: formElements.length;
+
+    for(var i=0; i<lenght; i++){
+        formElements[i].value = '';
+    }
+}
 $('#create-event-form').on('submit', function(e){
     e.preventDefault();
     $.ajax({
@@ -31,14 +37,13 @@ $('#create-event-form').on('submit', function(e){
             observations: this.observations.value
         },
         success: function(data){
-            console.log(data);
-            alert("exito");
+            $('#create-event-popover').removeClass('is-open');
+            clearForm('#create-event-form');
+            getEventsDay($('#date-calendar').data('date'));
         },
         error: function(res){
-            console.log(res);
-            alert("error");
+            console.log("Algo salio mal");
         }
 
     });
-    console.log(this);
 })

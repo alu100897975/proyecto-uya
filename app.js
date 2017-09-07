@@ -14,7 +14,7 @@ var express = require('express'),
 
 
 
-//mongoose.connect('localhost:27017/clasdy');
+mongoose.connect('localhost:27017/clasdy');
 // app.use(sass({ //Poner middleware sass antes de express.static
 //     src: __dirname + '/development',
 //     dest: __dirname + '/public',
@@ -69,7 +69,7 @@ function isAuthenticated(req,res,next){
 
 // Rutas para usuarios no autenticados
 app.use('/join',isUnauthenticated, require('./routes/auth')); //Rutas de acceso
-app.use('/event', require('./routes/event'));
+app.use('/events', require('./routes/event'));
 
 // Rutas para usuarios autenticados
 app.get('/logout',isAuthenticated, (req,res)=>{
@@ -79,7 +79,37 @@ app.get('/logout',isAuthenticated, (req,res)=>{
     });
 });
 app.get('/home', (req,res)=>{
-    res.render('home');
+    var cd = new Date(); //current_date
+    var Event = require('./models/event');
+    Event.find({user: '59132aab98f4890eb8618e09'})
+        .sort({"date.year": 1, "date.month": 1, "date.day": 1})
+        .exec(
+            function(err,events){
+                if(err){
+                    res.send("No se pudieron cargar los eventos");
+                    return;
+                }
+                if(events){
+                    var dateEvents = [];
+
+                    for(var i=0; i<events.length; i++){
+                        var event = Object.assign({},events[i].toObject());
+
+                        var dateEvent = new Date(event.date.year,event.date.month-1, event.date.day, event.time.hour, event.time.minutes );
+                        var remaining = dateEvent - cd;
+
+                        if( remaining >= 0){
+                            remaining = (remaining/86400000).toFixed(0);
+                            event.remaining = remaining;
+                            dateEvents.push(event);
+                        }
+
+                    };
+                    res.render('home', {nextEvents: dateEvents.slice(0,4)});
+                }
+            }
+        );
+
 });
 app.get('/', (req,res)=>{
     /*

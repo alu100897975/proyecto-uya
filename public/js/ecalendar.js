@@ -39,16 +39,63 @@ var $cal = (function (){
         days: $('#days')
     };
 })();
+function getEventsDay(info){
+    var {dayIndex, day, monthIndex, year} = info;
+    $('#date-calendar')
+        .html(`
+            <span class="highlight">${DAYS[dayIndex].toCapitalize()}</span>
+            <span> ${day} de ${MONTHS[monthIndex].name} de ${year}</span>
+        `)
+        .data('date', info);
+    var formEvent = document.querySelector('#create-event-form');
+    formEvent.day.value = day;
+    formEvent.month.value= monthIndex + 1;
+    formEvent.year.value = year;
 
+    $.ajax({
+        method: 'GET',
+        url: `/events?day=${day}&month=${monthIndex+1}&year=${year}`,
+        success: function(data){
+            var events = data.events;
+            var html ='';
+
+            for(var i=0; i<events.length; i++){
+                html += `<li class="event">
+                    <div class="event-info">
+                        <div class="event-info">
+                            <div class="event-name">
+                                ${events[i].name}
+                            </div>
+                            <div class="aditional-info">
+                                <span class="event-time">${events[i].time.hour}:${events[i].time.minutes}</span>
+                                <span class="event-observations">${events[i].observations}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="event-actions">
+                        <button>
+                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                        </button>
+                        <button>
+                            <i class="fa fa-trash-o" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </li>`
+            }
+            $('#day-events').html(html);
+        }
+    })
+}
 class Calendar {
     constructor(){
         var date = new Date();
         this.cd = {
+            dayIndex: this._normalizeDayIndex(date.getDay()),
             day: date.getDate(),
-            month: date.getMonth(),
+            monthIndex: date.getMonth(),
             year: date.getFullYear()
         };
-
+        console.log(this.cd);
         date.setDate(1);
         this._generateMonth(date);
 
@@ -94,10 +141,10 @@ class Calendar {
 
         for(var i=0; i<date.weeks; i++){
             trs += '<tr>';
-            while(j++<7 && day<=date.month.days){
+            while(j<7 && day<=date.month.days){
                 tds += `
                     <td>
-                        <div class="day-calendar" data-day="${day}">
+                        <div class="day-calendar" data-day="${day}" data-index="${j++}">
                             <div class="day-number">${day++}</div>
                         </div>
                     </td>`;
@@ -132,7 +179,7 @@ class Calendar {
         $cal.days.html(cal.days);
 
         // marcar dia actual
-        if(this.month.month.index == this.cd.month && this.month.year == this.cd.year){
+        if(this.month.month.index == this.cd.monthIndex && this.month.year == this.cd.year){
             $(`.day-calendar[data-day="${this.cd.day}"]`).addClass('currend-day');
         }
     }
@@ -142,3 +189,4 @@ class Calendar {
 
 };
 var calendar = new Calendar();
+getEventsDay(Object.assign({},calendar.cd) );

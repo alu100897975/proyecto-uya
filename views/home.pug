@@ -20,16 +20,13 @@ block content
                                         th.name Nombre
                                         th.remaining Faltan
                                 tbody
-                                    tr
-                                        td
-                                            .event-name Examen LPPaaaassssssssssssssssssssssssssssssssssssssssssssaaaaaaaa
-                                        td
-                                            .remaining-days 8 días
-                                    tr
-                                        td
-                                            .event-name Examen LPP
-                                        td
-                                            .remaining-days 8 días
+                                    for nextEvent in nextEvents
+                                        tr
+                                            td
+                                                .event-name= nextEvent.name
+                                            td
+                                                .remaining-days= nextEvent.remaining
+                                                    | &nbspdías
                         hr
                         .calendar
                             header.with-actions
@@ -47,9 +44,7 @@ block content
             .col-xs-12.col-sm-7.mean.container.container-flex
                 .day-calendar-events
                     header.with-actions
-                        .title.date
-                            span.highlight Miércoles
-                            | &nbsp1 de mayo de 2017
+                        .title.date#date-calendar
                         .actions
                             button(class="event-form-toggle")
                                 i(class="fa fa-plus" aria-hidden="true")
@@ -59,95 +54,7 @@ block content
                                 i(class="fa fa-chevron-right" aria-hidden="true")
                     hr
                     .day-events
-                        ul.events
-                            li.event.important
-                                .event-info
-                                    .event-name Examen de LPP
-                                    .aditional-info
-                                        span.event-time 10:00 - 11:00
-                                        span.event-observations Observaciones...
-                                .event-actions
-                                    button
-                                        i(class="fa fa-pencil" aria-hidden="true")
-                                    button
-                                        i(class="fa fa-trash-o" aria-hidden="true")
-                            li.event.important
-                                .event-info
-                                    .event-name Examen de LPP
-                                    .aditional-info
-                                        span.event-time 10:00 - 11:00
-                                        span.event-observations Observaciones...
-                                .event-actions
-                                    button
-                                        i(class="fa fa-pencil" aria-hidden="true")
-                                    button
-                                        i(class="fa fa-trash-o" aria-hidden="true")
-                            li.event.important
-                                .event-info
-                                    .event-name Examen de LPP
-                                    .aditional-info
-                                        span.event-time 10:00 - 11:00
-                                        span.event-observations Observaciones...
-                                .event-actions
-                                    button
-                                        i(class="fa fa-pencil" aria-hidden="true")
-                                    button
-                                        i(class="fa fa-trash-o" aria-hidden="true")
-                            li.event.important
-                                .event-info
-                                    .event-name Examen de LPP
-                                    .aditional-info
-                                        span.event-time 10:00 - 11:00
-                                        span.event-observations Observaciones...
-                                .event-actions
-                                    button
-                                        i(class="fa fa-pencil" aria-hidden="true")
-                                    button
-                                        i(class="fa fa-trash-o" aria-hidden="true")
-                            li.event.important
-                                .event-info
-                                    .event-name Examen de LPP
-                                    .aditional-info
-                                        span.event-time 10:00 - 11:00
-                                        span.event-observations Observaciones...
-                                .event-actions
-                                    button
-                                        i(class="fa fa-pencil" aria-hidden="true")
-                                    button
-                                        i(class="fa fa-trash-o" aria-hidden="true")
-                            li.event.important
-                                .event-info
-                                    .event-name Examen de LPP
-                                    .aditional-info
-                                        span.event-time 10:00 - 11:00
-                                        span.event-observations Observaciones...
-                                .event-actions
-                                    button
-                                        i(class="fa fa-pencil" aria-hidden="true")
-                                    button
-                                        i(class="fa fa-trash-o" aria-hidden="true")
-                            li.event.important
-                                .event-info
-                                    .event-name Examen de LPP
-                                    .aditional-info
-                                        span.event-time 10:00 - 11:00
-                                        span.event-observations Observaciones...
-                                .event-actions
-                                    button
-                                        i(class="fa fa-pencil" aria-hidden="true")
-                                    button
-                                        i(class="fa fa-trash-o" aria-hidden="true")
-                            li.event.important
-                                .event-info
-                                    .event-name Examen de LPP
-                                    .aditional-info
-                                        span.event-time 10:00 - 11:00
-                                        span.event-observations Observaciones...
-                                .event-actions
-                                    button
-                                        i(class="fa fa-pencil" aria-hidden="true")
-                                    button
-                                        i(class="fa fa-trash-o" aria-hidden="true")
+                        ul.events#day-events
     
 block scripts
     script(src="/public/js/ecalendar.js")
