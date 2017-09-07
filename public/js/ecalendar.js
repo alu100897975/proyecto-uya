@@ -86,11 +86,11 @@ function getEventsDay(info){
                         </div>
                     </li>`
                 }
-                $('#day-events').html(html);
+                $('#day-events').html(`<ul class="events">${html}</ul>`);
             }
             else if(http.status==204){
                 $('#day-events').html(
-                    `<div class="no-content">No se encontraron eventos</div>`
+                    '<div class="no-content" role="alert">No se encontraron eventos</div>'
                 );
             }
         }
@@ -108,12 +108,12 @@ function loadNextEvents(){
                 var nextEvents = data.nextEvents;
                 for(var i=0; i<nextEvents.length; i++){
                     html += `
-                        <tr>
+                        <tr tabindex="0">
                             <td>
                                 <div class="event-name">${nextEvents[i].name}</div>
                             </td>
                             <td>
-                                <div class="remaining-days">${nextEvents[i].remaining} días</div>
+                                <div class="remaining-days" aria-label="${nextEvents[i].remaining} días restantes">${nextEvents[i].remaining} días</div>
                             </td>
                         </tr>
                     `;
@@ -192,10 +192,11 @@ class Calendar {
             while(j<7 && day<=date.month.days){
                 tds += `
                     <td>
-                        <div class="day-calendar" data-day="${day}" data-index="${j++}">
-                            <div class="day-number">${day++}</div>
-                        </div>
+                        <button class="day-calendar" data-day="${day}" data-index="${j}" aria-label="${day} ${DAYS[j]}"  aria-describedby="date-calendar">
+                            <span class="day-number">${day++}</span>
+                        </button>
                     </td>`;
+                j++;
             }
             trs+=tds + '</tr>';
             tds =''; j=0;

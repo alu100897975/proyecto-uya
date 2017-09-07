@@ -9,7 +9,9 @@ html, body {
     padding-top: $height-navbar;
     min-height: calc(100% - #{$footer-height});
 }
-
+.actions button:hover,.actions button:focus {
+    color: teal;
+}
 // BEGIN HEADER
 header.main {
     width: 100%;
