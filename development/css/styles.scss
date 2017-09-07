@@ -1,11 +1,13 @@
-html {
+// BEGIN VARIABLES
+$footer-height: 65px;
+$height-navbar: 51px;
+// END VARIABLES
+html, body {
     height: 100%;
 }
-body {
-    min-height: 100%;
-}
 .content {
-    padding-top: 50px;
+    padding-top: $height-navbar;
+    min-height: calc(100% - #{$footer-height});
 }
 
 // BEGIN HEADER
@@ -28,6 +30,7 @@ footer {
     padding: 20px 0;
     text-align: center;
     color: #333;
+    height: $footer-height;
 }
 // END FOOTER
 
