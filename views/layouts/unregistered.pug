@@ -25,17 +25,17 @@ html(lang='es')
                         .navbar-toggle.flex-expand-w.align-left
                             ul.navbar-menu.stretch.animated
                                 li
-                                    a(href="/" ) Inicio
+                                    a(href="/" role="menuitem" tabindex="0") Inicio
                                 li
-                                    a(href="/#features") Herramientas
+                                    a(href="/#features" role="menuitem" tabindex="0") Herramientas
                                 li
-                                    a(href="/#subscription") Suscríbete
+                                    a(href="/#subscription" role="menuitem" tabindex="0") Suscríbete
                         .navbar-logo.logo
-                            a(href="/") Clasdy
+                            a(href="/" role="link" tabindex="0") Clasdy
                         .flex-expand-w.align-right
                             ul.navbar-menu
                                 li
-                                    a(href="/join/login" class="btn btn-outline-teal refuse-navbar-link") Entrar
+                                    a(href="/join/login" class="btn btn-outline-teal refuse-navbar-link" role="link" tabindex="0") Entrar
         section.content
             block content
         footer

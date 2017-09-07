@@ -8,10 +8,10 @@ block content
                 .description
                         .row.center-sm
                             .col-xs-12.col-sm-6
-                                h1 Clasdy
-                                p Una aplicación para que los alumnos y profesores puedan reportar eventos ocurridos durante la jornada académica, a modo de noticias.
+                                h1(tabindex="0") Clasdy
+                                p(tabindex="0") Una aplicación para que los alumnos y profesores puedan reportar eventos ocurridos durante la jornada académica, a modo de noticias.
                 .sign-in
-                    a(href="/join/signup" class="btn hover-teal") Regístrate
+                    a(href="/join/signup" class="btn hover-teal" role="link" tabindex="0") Regístrate
 
     section.features#features
         .container
@@ -19,30 +19,30 @@ block content
                 .row.center-md.middle-sm
                     .col-xs-12.col-sm-6.col-md-5
                         .feature-description
-                            h2 Calendario
-                            p Dispón de un calendario que reúna todos tus eventos académicos.
+                            h2(tabindex="0" id="tit-calendario") Calendario
+                            p(tabindex="0" id="desc-cal") Dispón de un calendario que reúna todos tus eventos académicos.
                     .col-xs-12.col-sm-6.col-md-5
-                        img(src="/public/img/calendar.png" alt="")
+                        img(src="/public/img/calendar.png" alt="Imagen de calendario" aria-labelledby="tit-cal" aria-describedby="desc-cal")
             hr
             .feature
                 .row.center-md.middle-sm.reverse
                     .col-xs-12.col-sm-6.col-md-5
                         .feature-description
-                            h2 Chat
-                            p Mantente informado sobre cualquier información de tu asignatura.
+                            h2(tabindex="0" id="tit-chat") Chat
+                            p(tabindex="0" id="desc-chat") Mantente informado sobre cualquier información de tu asignatura.
                     .col-xs-12.col-sm-6.col-md-5
-                        img(src="/public/img/chat.png" alt="")
+                        img(src="/public/img/chat.png" alt="Imagen de chat" aria-labelledby="tit-chat" aria-describedby="desc-chat")
                     
     
     section.subscription#subscription
         .container
             .row.center-sm
                 .col-xs-12.col-sm-6
-                    h4 ¿Quieres recibir información sobre futuras actualizaciones?
-                    form(action="#" method="" class="form")
+                    h4(tabindex="0") ¿Quieres recibir información sobre futuras actualizaciones?
+                    form(action="#" method="" class="form" role="form")
                         .form-group
                             .input-field
                                 label(for="email") Email
                                 input(type="email" placeholder="Introduce tu email" name="email" id="email" required)
                         .submit
-                            input(type="submit" class="btn hover-red" value="Suscribirse")
+                            input(type="submit" class="btn hover-red" value="Suscribirse" role="button")
