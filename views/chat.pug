@@ -6,21 +6,20 @@ block style
     link(rel="stylesheet" href="/public/css/framywork.css")
     link(rel="stylesheet" href="/public/css/chat.css")
 block content
-    section.content
-            div(class="container")
-                h1(id="titulo") Chatea con tus compañeros
+    div(class="container")
+        h1(id="titulo") Chatea con tus compañeros
+        div(class="row")
+            div(class="col s12 m12 l12")
+                div(class="card teal accent-4")
+                    div(id="messages")
+        div(class="row") 
+            form(class="col s12 m12 l12" onsubmit="return addMessage(this);")
                 div(class="row")
-                    div(class="col s12 m12 l12")
-                        div(class="card teal accent-4")
-                            div(id="messages")
-                div(class="row") 
-                    form(class="col s12 m12 l12" onsubmit="return addMessage(this);")
-                        div(class="row")
-                            div(class="col s12 m10 l10")
-                                .input-field 
-                                    input(type="text" id="text" placeholder="Mensaje..." class="validate")
-                            div(class="col s12 m2 l2 center")
-                                button(class="btn waves-effect waves-light btn-outline-teal" id="boton-mensaje" type="submit" name="action") Enviar
+                    div(class="col s12 m10 l10")
+                        .input-field 
+                            input(type="text" id="text" placeholder="Mensaje..." class="validate")
+                    div(class="col s12 m2 l2 center")
+                        button(class="btn waves-effect waves-light btn-outline-teal" id="boton-mensaje" type="submit" name="action") Enviar
 
 block scripts
     script(src="/socket.io/socket.io.js")
