@@ -1,4 +1,4 @@
-doctype
+doctype html
 html(lang='es')
     head
         meta(charset='utf-8')
@@ -32,11 +32,11 @@ html(lang='es')
                         .flex-expand-w.align-right
                             ul.navbar-menu
                                 li.pos-relative
-                                    button(class="event-form-toggle not-navbar-link")
+                                    button(class="event-form-toggle not-navbar-link" aria-label="Crear evento" id="create-event-button")
                                         i(class="fa fa-plus" aria-hidden="true" style="font-size: 25px")
                                     .popover.popover-create-event#create-event-popover
                                         .close-event-popover.event-form-toggle
-                                            button
+                                            button(aria-label="Cancelar creacion evento")
                                                 i(class="fa fa-times" aria-hidden="true")
                                         .create-event
                                             form.form.form-small.create-event-form#create-event-form(method="POST" action="/events")

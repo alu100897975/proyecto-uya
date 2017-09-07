@@ -9,7 +9,7 @@ block content
             .col-xs-12.col-sm-5
                 .container.container-custom
                     .sidebar
-                        .next-events
+                        .next-events(tabindex="0" aria-label="Proximos eventos")
                             header
                                 .title
                                     | Próximos&nbsp
@@ -21,33 +21,33 @@ block content
                                         th.remaining Faltan
                                 tbody#next-events
                         hr
-                        .calendar
+                        .calendar(tabindex="0" aria-label="Calendario")
                             header.with-actions
-                                .title.month-year-calendar#month
+                                .title.month-year-calendar(tabindex="0")#month
                                 .actions
-                                    button(class="event-form-toggle")
+                                    button(class="event-form-toggle" aria-labelledby="create-event-button")
                                         i(class="fa fa-plus" aria-hidden="true")
-                                    button(onclick="calendar.refreshMonth(-1)")
+                                    button(onclick="calendar.refreshMonth(-1)" aria-label="mes anterior")
                                         i(class="fa fa-chevron-left" aria-hidden="true")
-                                    button(onclick="calendar.refreshMonth(1)")
+                                    button(onclick="calendar.refreshMonth(1)" aria-label="mes siguiente")
                                         i(class="fa fa-chevron-right" aria-hidden="true")
                             
                             #ecalendar
                         
             .col-xs-12.col-sm-7.mean.container.container-flex
-                .day-calendar-events
+                .day-calendar-events#day-calendar-events(tabindex="10" aria-labelledby="date-calendar")
                     header.with-actions
                         .title.date#date-calendar
                         .actions
-                            button(class="event-form-toggle")
+                            button(class="event-form-toggle" aria-labelledby="create-event-button")
                                 i(class="fa fa-plus" aria-hidden="true")
-                            button
+                            button(aria-label="dia anterior")
                                 i(class="fa fa-chevron-left" aria-hidden="true")
-                            button
+                            button(aria-label="dia siguiente")
                                 i(class="fa fa-chevron-right" aria-hidden="true")
                     hr
-                    .day-events
-                        ul.events#day-events
+                    .day-events#day-events
+                        
     
 block scripts
     script(src="/public/js/ecalendar.js")
