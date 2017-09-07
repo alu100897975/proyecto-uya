@@ -110,6 +110,20 @@ $nav-height: 50px;
     .navbar-menu {
         li {
             display: inline-block !important;
+            a.active {
+                position: relative;
+                &:after {
+                    content: '';
+                    position: absolute;
+                    bottom: -1px;;
+                    left: 50%;
+                    width: 0px;
+                    height: 5px;
+                    background-color: #9D1717;
+                    left: 0;
+                    width: 100%;
+                }
+            }
         }
         a:not(.refuse-navbar-link), button {
             padding: 10px 15px;
@@ -120,7 +134,7 @@ $nav-height: 50px;
             }
         }
         &.animated {
-            a {
+            a:not(.active) {
                 position: relative;
                 &:after {
                     content: '';

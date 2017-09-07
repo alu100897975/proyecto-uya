@@ -1,4 +1,6 @@
-extends layouts/registered.pug
+extends layouts/registered
+block variables
+    - var page = 'calendar'
 block style
     link(rel="stylesheet" href="/public/css/home.css")
     link(rel="stylesheet" href="/public/css/ecalendar.css")
