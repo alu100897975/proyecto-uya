@@ -79,37 +79,7 @@ app.get('/logout',isAuthenticated, (req,res)=>{
     });
 });
 app.get('/home', (req,res)=>{
-    var cd = new Date(); //current_date
-    var Event = require('./models/event');
-    Event.find({user: '59132aab98f4890eb8618e09'})
-        .sort({"date.year": 1, "date.month": 1, "date.day": 1})
-        .exec(
-            function(err,events){
-                if(err){
-                    res.send("No se pudieron cargar los eventos");
-                    return;
-                }
-                if(events){
-                    var dateEvents = [];
-
-                    for(var i=0; i<events.length; i++){
-                        var event = Object.assign({},events[i].toObject());
-
-                        var dateEvent = new Date(event.date.year,event.date.month-1, event.date.day, event.time.hour, event.time.minutes );
-                        var remaining = dateEvent - cd;
-
-                        if( remaining >= 0){
-                            remaining = (remaining/86400000).toFixed(0);
-                            event.remaining = remaining;
-                            dateEvents.push(event);
-                        }
-
-                    };
-                    res.render('home', {nextEvents: dateEvents.slice(0,4)});
-                }
-            }
-        );
-
+    res.render('home');
 });
 app.get('/', (req,res)=>{
     /*

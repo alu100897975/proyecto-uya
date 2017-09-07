@@ -55,37 +55,78 @@ function getEventsDay(info){
     $.ajax({
         method: 'GET',
         url: `/events?day=${day}&month=${monthIndex+1}&year=${year}`,
-        success: function(data){
-            var events = data.events;
-            var html ='';
+        success: function(data, textStatus, http){
+            if(http.status==200) {
+                var events = data.events;
+                var html ='';
 
-            for(var i=0; i<events.length; i++){
-                html += `<li class="event">
-                    <div class="event-info">
+                for(var i=0; i<events.length; i++){
+                    html += `<li class="event">
                         <div class="event-info">
-                            <div class="event-name">
-                                ${events[i].name}
-                            </div>
-                            <div class="aditional-info">
-                                <span class="event-time">${events[i].time.hour}:${events[i].time.minutes}</span>
-                                <span class="event-observations">${events[i].observations}</span>
+                            <div class="event-info">
+                                <div class="event-name">
+                                    ${events[i].name}
+                                </div>
+                                <div class="aditional-info">
+                                    <span class="event-time">${events[i].time.hour}:${events[i].time.minutes}</span>
+                                    <span class="event-observations">${events[i].observations}</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="event-actions">
-                        <button>
-                            <i class="fa fa-pencil" aria-hidden="true"></i>
-                        </button>
-                        <button>
-                            <i class="fa fa-trash-o" aria-hidden="true"></i>
-                        </button>
-                    </div>
-                </li>`
+                        <div class="event-actions">
+                            <button>
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </button>
+                            <button>
+                                <i class="fa fa-trash-o" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </li>`
+                }
+                $('#day-events').html(html);
             }
-            $('#day-events').html(html);
+            else if(http.status==204){
+                $('#day-events').text('No se encontraron eventos');
+            }
         }
     })
 }
+/*  LOAD NEXT EVENTS */
+function loadNextEvents(){
+    console.log('Cargado');
+    $.ajax({
+        method: 'GET',
+        url: '/events/next-events',
+        success: function(data,textStatus, http){
+
+            if(http.status==200){
+                var html = '';
+                var nextEvents = data.nextEvents;
+                console.log(nextEvents);
+                for(var i=0; i<nextEvents.length; i++){
+                    html += `
+                        <tr>
+                            <td>
+                                <div class="event-name">${nextEvents[i].name}</div>
+                            </td>
+                            <td>
+                                <div class="remaining-days">${nextEvents[i].remaining} días</div>
+                            </td>
+                        </tr>
+                    `;
+                }
+                $('#next-events').html(html);
+            }
+            else if(http.status == 204){
+                $('#next-events').text('No se encontraron eventos próximos');
+            }
+
+        },
+        error: function(res){
+            alert("mal");
+        }
+    })
+};
 class Calendar {
     constructor(){
         var date = new Date();
@@ -95,7 +136,6 @@ class Calendar {
             monthIndex: date.getMonth(),
             year: date.getFullYear()
         };
-        console.log(this.cd);
         date.setDate(1);
         this._generateMonth(date);
 
@@ -190,3 +230,4 @@ class Calendar {
 };
 var calendar = new Calendar();
 getEventsDay(Object.assign({},calendar.cd) );
+loadNextEvents();

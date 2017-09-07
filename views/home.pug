@@ -9,24 +9,17 @@ block content
             .col-xs-12.col-sm-5
                 .container.container-custom
                     .sidebar
-                        .important-events
+                        .next-events-container
                             header
                                 .title
                                     | Próximos&nbsp
                                     span.highlight eventos
-                            table#important-events
+                            table
                                 thead
                                     tr
                                         th.name Nombre
                                         th.remaining Faltan
-                                tbody
-                                    for nextEvent in nextEvents
-                                        tr
-                                            td
-                                                .event-name= nextEvent.name
-                                            td
-                                                .remaining-days= nextEvent.remaining
-                                                    | &nbspdías
+                                tbody#next-events
                         hr
                         .calendar
                             header.with-actions

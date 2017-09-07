@@ -21,7 +21,7 @@ function clearForm(form, opt){
     for(var i=0; i<lenght; i++){
         formElements[i].value = '';
     }
-}
+};
 $('#create-event-form').on('submit', function(e){
     e.preventDefault();
     $.ajax({
@@ -40,10 +40,11 @@ $('#create-event-form').on('submit', function(e){
             $('#create-event-popover').removeClass('is-open');
             clearForm('#create-event-form');
             getEventsDay($('#date-calendar').data('date'));
+            loadNextEvents();
         },
         error: function(res){
             console.log("Algo salio mal");
         }
 
     });
-})
+});
