@@ -86,7 +86,9 @@ function getEventsDay(info){
                 $('#day-events').html(html);
             }
             else if(http.status==204){
-                $('#day-events').text('No se encontraron eventos');
+                $('#day-events').html(
+                    `<div class="no-content">No se encontraron eventos</div>`
+                );
             }
         }
     })
@@ -102,7 +104,6 @@ function loadNextEvents(){
             if(http.status==200){
                 var html = '';
                 var nextEvents = data.nextEvents;
-                console.log(nextEvents);
                 for(var i=0; i<nextEvents.length; i++){
                     html += `
                         <tr>
@@ -118,7 +119,12 @@ function loadNextEvents(){
                 $('#next-events').html(html);
             }
             else if(http.status == 204){
-                $('#next-events').text('No se encontraron eventos próximos');
+                $('#next-events').html(
+                    `<tr>
+                        <td colspan="2">
+                            <div class="no-content">No se encontraron eventos próximos<div>
+                        <td>
+                    </tr>`);
             }
 
         },
