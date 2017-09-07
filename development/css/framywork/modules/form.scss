@@ -29,6 +29,9 @@ $error-color: #d23827;
 		input {
 			height: 35px;
 		}
+		input:focus {
+			border-color: #888;
+		}
 		.validation-msg {
 			color: $error-color;
 			font-size: 14px;

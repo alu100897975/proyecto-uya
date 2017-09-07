@@ -1,4 +1,6 @@
 $('#days').on('click','.day-calendar', function(){
+    $('.day-selected').removeClass('day-selected');
+    $(this).addClass('day-selected');
     getEventsDay({
         dayIndex: this.getAttribute('data-index'),
         day: this.getAttribute('data-day'),

@@ -12,6 +12,7 @@ $nav-height: 50px;
         .navbar-toggle .navbar-menu {
             border-top: 1px solid #dadada;
         }
+
     }
     &.is-open {
         .bar {
@@ -98,6 +99,7 @@ $nav-height: 50px;
         margin-right: 0px;
     }
     .navbar-toggle {
+        overflow:visible;
         order: initial;
         width: 0px;
         max-height: none;
@@ -115,24 +117,25 @@ $nav-height: 50px;
         &.stretch {
             a {
                 line-height: $nav-height - 20px ;
-                /*
-                 ANIMACION
+            }
+        }
+        &.animated {
+            a {
                 position: relative;
                 &:after {
                     content: '';
                     position: absolute;
-                    bottom: 0;
+                    bottom: -1px;;
                     left: 50%;
                     width: 0px;
                     height: 5px;
                     transition: all ease-in-out .3s;
                 }
-                &:hover:after {
+                &:hover:after, &:focus:after {
                     background-color: teal;
                     left: 0;
                     width: 100%;
                 }
-                */
             }
         }
     }

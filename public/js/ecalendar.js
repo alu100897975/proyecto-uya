@@ -41,12 +41,15 @@ var $cal = (function (){
 })();
 function getEventsDay(info){
     var {dayIndex, day, monthIndex, year} = info;
+
+
     $('#date-calendar')
         .html(`
             <span class="highlight">${DAYS[dayIndex].toCapitalize()}</span>
             <span> ${day} de ${MONTHS[monthIndex].name} de ${year}</span>
         `)
         .data('date', info);
+
     var formEvent = document.querySelector('#create-event-form');
     formEvent.day.value = day;
     formEvent.month.value= monthIndex + 1;
@@ -95,7 +98,6 @@ function getEventsDay(info){
 }
 /*  LOAD NEXT EVENTS */
 function loadNextEvents(){
-    console.log('Cargado');
     $.ajax({
         method: 'GET',
         url: '/events/next-events',
@@ -194,15 +196,6 @@ class Calendar {
                             <div class="day-number">${day++}</div>
                         </div>
                     </td>`;
-                /*
-                //codigo despues de div.day-number
-                <div class="day-resume">
-                    <div class="day-events-calendars">
-                        <div class="type-calendar personal"></div>
-                        <div class="type-calendar school"></div>
-                    </div>
-                </div>
-                */
             }
             trs+=tds + '</tr>';
             tds =''; j=0;
@@ -226,7 +219,11 @@ class Calendar {
 
         // marcar dia actual
         if(this.month.month.index == this.cd.monthIndex && this.month.year == this.cd.year){
-            $(`.day-calendar[data-day="${this.cd.day}"]`).addClass('currend-day');
+            $(`.day-calendar[data-day="${this.cd.day}"]`).addClass('current-day day-selected');
+
+            for(var i=1; i<this.cd.day; i++){
+                $(`.day-calendar[data-day="${i}"]`).addClass('past-day');
+            }
         }
     }
     _normalizeDayIndex(day){
