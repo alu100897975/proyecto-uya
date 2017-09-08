@@ -12,7 +12,7 @@ var express = require('express'),
 
     passport = require('./config/passport');
 
-mongoose.connect('localhost:27017/clasdy');
+mongoose.connect('mongodb://<dbuser>:<dbpassword>@ds127864.mlab.com:27864/heroku_5m0081qc');
 
 
 app.use('/public',express.static(__dirname + '/public')); //Poner arriba para evitar serializacion en cada peticion
