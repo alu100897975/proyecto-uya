@@ -43,9 +43,6 @@ table#calendar {
     border: 1px solid #9B9B9B;
     position: relative;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     border-radius: 5px;
     &.past-day {
         color: #555;
