@@ -32,8 +32,8 @@ html(lang='es')
                             ul.navbar-menu
                                 if(page=="calendar")
                                     li.pos-relative
-                                        button(class="event-form-toggle not-navbar-link" aria-label="Crear evento" id="create-event-button")
-                                            i(class="fa fa-plus" aria-hidden="true" style="font-size: 25px")
+                                        button(class="event-form-toggle not-navbar-link font-size-20" aria-label="Crear evento" title="Crear evento" id="create-event-button")
+                                            i(class="fa fa-plus" aria-hidden="true")
                                         .popover.popover-create-event#create-event-popover
                                             .close-event-popover.event-form-toggle
                                                 button(aria-label="Cancelar creacion evento")
@@ -73,8 +73,8 @@ html(lang='es')
                                                     .submit
                                                         input(type="submit" class="btn btn-outline-teal" value="Crear evento")
                                 li
-                                    button.not-navbar-link
-                                        i(class="fa fa-user-circle-o" aria-hidden="true" style="font-size: 25px")
+                                    a.not-navbar-link.font-size-20(href="/logout" title="Cerrar sesión")
+                                        i(class="fa fa-sign-out" aria-hidden="true")
         section.content
             block content
         footer
