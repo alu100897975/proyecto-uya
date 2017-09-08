@@ -27,7 +27,8 @@
     "passport-facebook": "^2.1.1",
     "passport-google-oauth2": "^0.1.6",
     "passport-local": "^1.0.0",
-    "pug": "^2.0.0-rc.1"
+    "pug": "^2.0.0-rc.1",
+    "socket.io": "^2.0.3"
   },
   "devDependencies": {
     "browser-sync": "^2.18.8",
@@ -35,7 +36,6 @@
     "gulp-nodemon": "^2.2.1",
     "gulp-sass": "^3.1.0",
     "mocha": "^3.4.2",
-    "should": "^11.2.1",
-    "socket.io": "^2.0.1"
+    "should": "^11.2.1"
   }
 }
