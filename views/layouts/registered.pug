@@ -1,9 +1,10 @@
 doctype html
 html(lang='es')
+    block variables
     head
         meta(charset='utf-8')
         meta(name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1")
-        title My Home
+        title Clasdy | #{page} 
         link(href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous")
         
         link(href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet")
@@ -11,7 +12,7 @@ html(lang='es')
         link(rel="stylesheet" href="/public/css/styles.css")
         block style
     body
-        block variables
+        
         header.main
             nav.navbar.navbar-default
                 .container.container-flex
@@ -23,14 +24,14 @@ html(lang='es')
                         .navbar-toggle.flex-expand-w.align-left
                             ul.navbar-menu.stretch.animated
                                 li
-                                    a(href="/" class= page== 'calendar'? "active": "") Calendario
+                                    a(href="/" class= page== 'calendario'? "active": "") Calendario
                                 li
                                     a(href="/chat" class= page== 'chat'? "active": "") Chat
                         .navbar-logo.logo
                             a(href="/") Clasdy
                         .flex-expand-w.align-right
                             ul.navbar-menu
-                                if(page=="calendar")
+                                if(page=="calendario")
                                     li.pos-relative
                                         button(class="event-form-toggle not-navbar-link font-size-20" aria-label="Crear evento" title="Crear evento" id="create-event-button")
                                             i(class="fa fa-plus" aria-hidden="true")
